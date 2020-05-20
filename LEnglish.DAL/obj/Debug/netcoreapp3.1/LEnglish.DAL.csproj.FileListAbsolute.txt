@@ -1,0 +1,14 @@
+F:\Documents\LEnglish\LEnglish.DAL\bin\Debug\netcoreapp3.1\LEnglish.DAL.deps.json
+F:\Documents\LEnglish\LEnglish.DAL\bin\Debug\netcoreapp3.1\LEnglish.DAL.runtimeconfig.json
+F:\Documents\LEnglish\LEnglish.DAL\bin\Debug\netcoreapp3.1\LEnglish.DAL.runtimeconfig.dev.json
+F:\Documents\LEnglish\LEnglish.DAL\bin\Debug\netcoreapp3.1\LEnglish.DAL.dll
+F:\Documents\LEnglish\LEnglish.DAL\obj\Debug\netcoreapp3.1\LEnglish.DAL.AssemblyInfoInputs.cache
+F:\Documents\LEnglish\LEnglish.DAL\obj\Debug\netcoreapp3.1\LEnglish.DAL.AssemblyInfo.cs
+F:\Documents\LEnglish\LEnglish.DAL\obj\Debug\netcoreapp3.1\LEnglish.DAL.genruntimeconfig.cache
+F:\Documents\LEnglish\LEnglish.DAL\obj\Debug\netcoreapp3.1\LEnglish.DAL.csprojAssemblyReference.cache
+F:\Documents\LEnglish\LEnglish.DAL\bin\Debug\netcoreapp3.1\LEnglish.DAL.pdb
+F:\Documents\LEnglish\LEnglish.DAL\obj\Debug\netcoreapp3.1\LEnglish.DAL.dll
+F:\Documents\LEnglish\LEnglish.DAL\obj\Debug\netcoreapp3.1\LEnglish.DAL.pdb
+F:\Documents\LEnglish\LEnglish.DAL\bin\Debug\netcoreapp3.1\LEnglish.Common.dll
+F:\Documents\LEnglish\LEnglish.DAL\bin\Debug\netcoreapp3.1\LEnglish.Common.pdb
+F:\Documents\LEnglish\LEnglish.DAL\obj\Debug\netcoreapp3.1\LEnglish.DAL.csproj.CopyComplete
