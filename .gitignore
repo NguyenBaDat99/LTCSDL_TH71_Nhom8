@@ -292,3 +292,4 @@ _Pvt_Extensions
 .fake/
 
 .vs/LEnglish/v16/.suo
+*.suo
