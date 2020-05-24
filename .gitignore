@@ -291,3 +291,4 @@ _Pvt_Extensions
 # FAKE - F# Make
 .fake/
 
+.vs/LEnglish/v16/.suo
