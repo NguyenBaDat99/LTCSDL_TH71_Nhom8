@@ -7,6 +7,7 @@ using System.Linq;
 
 namespace LEnglish.DAL
 {
+    using LEnglish.Common.Rsp;
     using LEnglish.DAL.Models;
     public class NguoiDungRep :GenericRep<LEnglishDBContext, NguoiDung>
     {
@@ -23,5 +24,77 @@ namespace LEnglish.DAL
             m = base.Delete(m);
             return m.MaNguoiDung;
         }
+
+        #region --Methods--
+
+        public SingleRsp CreateNguoiDung(NguoiDung nguoidung)
+        {
+            var res = new SingleRsp();
+            using (var context = new LEnglishDBContext())
+            {
+                using (var tran = context.Database.BeginTransaction())
+                {
+                    try
+                    {
+                        var t = context.NguoiDung.Add(nguoidung);
+                        context.SaveChanges();
+                        tran.Commit();
+                    }
+                    catch(Exception ex)
+                    {
+                        tran.Rollback();
+                        res.SetError(ex.StackTrace);
+                    }
+                }
+            }
+            return res;
+        }
+
+        public SingleRsp UpdateNguoiDung(NguoiDung nguoidung)
+        {
+            var res = new SingleRsp();
+            using (var context = new LEnglishDBContext())
+            {
+                using (var tran = context.Database.BeginTransaction())
+                {
+                    try
+                    {
+                        var t = context.NguoiDung.Update(nguoidung);
+                        context.SaveChanges();
+                        tran.Commit();
+                    }
+                    catch (Exception ex)
+                    {
+                        tran.Rollback();
+                        res.SetError(ex.StackTrace);
+                    }
+                }
+            }
+            return res;
+        }
+
+        public SingleRsp RemoveNguoiDung(NguoiDung nguoidung)
+        {
+            var res = new SingleRsp();
+            using (var context = new LEnglishDBContext())
+            {
+                using (var tran = context.Database.BeginTransaction())
+                {
+                    try
+                    {
+                        var t = context.NguoiDung.Remove(nguoidung);
+                        context.SaveChanges();
+                        tran.Commit();
+                    }
+                    catch (Exception ex)
+                    {
+                        tran.Rollback();
+                        res.SetError(ex.StackTrace);
+                    }
+                }
+            }
+            return res;
+        }
+        #endregion
     }
 }

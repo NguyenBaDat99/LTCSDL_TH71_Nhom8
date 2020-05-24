@@ -39,5 +39,35 @@ namespace LEnglish.Web.Controllers
             return Ok(res);
         }
 
+        [HttpPost("search-capBac")]
+        public IActionResult SearchCapBac([FromBody]SearchReq req)
+        {
+            var res = new SingleRsp();
+            var nguoidung = _svc.SearchCapBac(req.Keyword, req.Page, req.Size);
+            res.Data = nguoidung;
+            return Ok(res);
+        }
+
+        [HttpPost("create-capBac")]
+        public IActionResult CreateCapBac([FromBody]CapBacReq req)
+        {
+            var res = _svc.CreateCapBac(req);
+            return Ok(res);
+        }
+
+        [HttpPost("update-capBac")]
+        public IActionResult UpdateCapBac([FromBody]CapBacReq req)
+        {
+            var res = _svc.UpdateCapBac(req);
+            return Ok(res);
+        }
+
+        [HttpPost("remove-capBac")]
+        public IActionResult RemoveCapBac([FromBody]SimpleReq req)
+        {
+            var res = _svc.RemoveCapBac(req.Keyword);
+            return Ok(res);
+        }
+
     }
 }

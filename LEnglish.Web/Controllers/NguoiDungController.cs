@@ -38,6 +38,36 @@ namespace LEnglish.Web.Controllers
             res.Data = _svc.All;
             return Ok(res);
         }
-        
+
+        [HttpPost("search-nguoiDung")]
+        public IActionResult SearchNguoiDung([FromBody]SearchReq req)
+        {
+            var res = new SingleRsp();
+            var nguoidung = _svc.SearchNguoiDung(req.Keyword, req.Page, req.Size);
+            res.Data = nguoidung; 
+            return Ok(res);
+        }
+
+        [HttpPost("create-nguoiDung")]
+        public IActionResult CreateNguoiDung([FromBody]NguoiDungReq req)
+        {
+            var res = _svc.CreateNguoiDung(req);
+            return Ok(res);
+        }
+
+        [HttpPost("update-nguoiDung")]
+        public IActionResult UpdateNguoiDung([FromBody]NguoiDungReq req)
+        {
+            var res = _svc.UpdateNguoiDung(req);
+            return Ok(res);
+        }
+
+        [HttpPost("remove-nguoiDung")]
+        public IActionResult RemoveNguoiDung([FromBody]SimpleReq req)
+        {
+            var res = _svc.RemoveNguoiDung(req.Id);
+            return Ok(res);
+        }
+
     }
 }

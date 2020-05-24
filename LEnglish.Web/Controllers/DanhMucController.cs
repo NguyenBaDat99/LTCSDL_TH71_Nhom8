@@ -38,5 +38,35 @@ namespace LEnglish.Web.Controllers
             res.Data = _svc.All;
             return Ok(res);
         }
+
+        [HttpPost("search-danhMuc")]
+        public IActionResult SearchDanhMuc([FromBody]SearchReq req)
+        {
+            var res = new SingleRsp();
+            var nguoidung = _svc.SearchDanhMuc(req.Keyword, req.Page, req.Size);
+            res.Data = nguoidung;
+            return Ok(res);
+        }
+
+        [HttpPost("create-danhMuc")]
+        public IActionResult CreateDanhMuc([FromBody]DanhMucReq req)
+        {
+            var res = _svc.CreateDanhMuc(req);
+            return Ok(res);
+        }
+
+        [HttpPost("update-danhMuc")]
+        public IActionResult UpdateDanhMuc([FromBody]DanhMucReq req)
+        {
+            var res = _svc.UpdateDanhMuc(req);
+            return Ok(res);
+        }
+
+        [HttpPost("remove-danhMuc")]
+        public IActionResult RemoveDanhMuc([FromBody]SimpleReq req)
+        {
+            var res = _svc.RemoveDanhMuc(req.Keyword);
+            return Ok(res);
+        }
     }
 }

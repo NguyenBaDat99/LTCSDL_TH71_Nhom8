@@ -1,9 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Text;
 
-namespace LEnglish.DAL.Models
+namespace LEnglish.Common.Req
 {
-    public partial class CauHoi
+    public class CauHoiReq
     {
         public string MaCauHoi { get; set; }
         public string NoiDungCauHoi { get; set; }

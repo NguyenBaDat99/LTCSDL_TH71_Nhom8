@@ -38,5 +38,35 @@ namespace LEnglish.Web.Controllers
             res.Data = _svc.All;
             return Ok(res);
         }
+
+        [HttpPost("search-baiTap")]
+        public IActionResult SearchBaiTap([FromBody]SearchReq req)
+        {
+            var res = new SingleRsp();
+            var nguoidung = _svc.SearchBaiTap(req.Keyword, req.Page, req.Size);
+            res.Data = nguoidung;
+            return Ok(res);
+        }
+
+        [HttpPost("create-baiTap")]
+        public IActionResult CreateBaiTap([FromBody]BaiTapReq req)
+        {
+            var res = _svc.CreateBaiTap(req);
+            return Ok(res);
+        }
+
+        [HttpPost("update-baiTap")]
+        public IActionResult UpdateBaiTap([FromBody]BaiTapReq req)
+        {
+            var res = _svc.UpdateBaiTap(req);
+            return Ok(res);
+        }
+
+        [HttpPost("remove-baiTap")]
+        public IActionResult RemoveBaiTap([FromBody]SimpleReq req)
+        {
+            var res = _svc.RemoveBaiTap(req.Keyword);
+            return Ok(res);
+        }
     }
 }

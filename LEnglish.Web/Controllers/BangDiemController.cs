@@ -38,5 +38,35 @@ namespace LEnglish.Web.Controllers
             res.Data = _svc.All;
             return Ok(res);
         }
+
+        [HttpPost("search-bangDiem")]
+        public IActionResult SearchBangDiem([FromBody]SearchReq req)
+        {
+            var res = new SingleRsp();
+            var nguoidung = _svc.SearchBangDiem(req.Keyword, req.Page, req.Size);
+            res.Data = nguoidung;
+            return Ok(res);
+        }
+
+        [HttpPost("create-bangDiem")]
+        public IActionResult CreateBangDiem([FromBody]BangDiemReq req)
+        {
+            var res = _svc.CreateBangDiem(req);
+            return Ok(res);
+        }
+
+        [HttpPost("update-bangDiem")]
+        public IActionResult UpdateBangDiem([FromBody]BangDiemReq req)
+        {
+            var res = _svc.UpdateBangDiem(req);
+            return Ok(res);
+        }
+
+        [HttpPost("remove-bangDiem")]
+        public IActionResult RemoveBangDiem([FromBody]SimpleReq req)
+        {
+            var res = _svc.RemoveBangDiem(req.Id);
+            return Ok(res);
+        }
     }
 }
