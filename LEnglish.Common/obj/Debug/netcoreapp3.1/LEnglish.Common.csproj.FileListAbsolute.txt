@@ -1,9 +1,0 @@
-F:\Documents\LEnglish\LEnglish.Common\bin\Debug\netcoreapp3.1\LEnglish.Common.deps.json
-F:\Documents\LEnglish\LEnglish.Common\bin\Debug\netcoreapp3.1\LEnglish.Common.dll
-F:\Documents\LEnglish\LEnglish.Common\obj\Debug\netcoreapp3.1\LEnglish.Common.AssemblyInfoInputs.cache
-F:\Documents\LEnglish\LEnglish.Common\obj\Debug\netcoreapp3.1\LEnglish.Common.AssemblyInfo.cs
-F:\Documents\LEnglish\LEnglish.Common\bin\Debug\netcoreapp3.1\LEnglish.Common.pdb
-F:\Documents\LEnglish\LEnglish.Common\obj\Debug\netcoreapp3.1\LEnglish.Common.dll
-F:\Documents\LEnglish\LEnglish.Common\obj\Debug\netcoreapp3.1\LEnglish.Common.pdb
-C:\Users\Dat\Desktop\LEnglish\LEnglish.Common\obj\Debug\netcoreapp3.1\LEnglish.Common.dll
-C:\Users\Dat\Desktop\LEnglish\LEnglish.Common\obj\Debug\netcoreapp3.1\LEnglish.Common.pdb
