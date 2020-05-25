@@ -14,3 +14,5 @@ F:\Documents\LEnglish\LEnglish.BLL\obj\Debug\netcoreapp3.1\LEnglish.BLL.csproj.C
 F:\Documents\LEnglish\LEnglish.BLL\obj\Debug\netcoreapp3.1\LEnglish.BLL.dll
 F:\Documents\LEnglish\LEnglish.BLL\obj\Debug\netcoreapp3.1\LEnglish.BLL.pdb
 F:\Documents\LEnglish\LEnglish.BLL\obj\Debug\netcoreapp3.1\LEnglish.BLL.genruntimeconfig.cache
+C:\Users\Dat\Desktop\LEnglish\LEnglish.BLL\obj\Debug\netcoreapp3.1\LEnglish.BLL.dll
+C:\Users\Dat\Desktop\LEnglish\LEnglish.BLL\obj\Debug\netcoreapp3.1\LEnglish.BLL.pdb

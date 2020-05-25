@@ -12,3 +12,5 @@ F:\Documents\LEnglish\LEnglish.DAL\obj\Debug\netcoreapp3.1\LEnglish.DAL.pdb
 F:\Documents\LEnglish\LEnglish.DAL\bin\Debug\netcoreapp3.1\LEnglish.Common.dll
 F:\Documents\LEnglish\LEnglish.DAL\bin\Debug\netcoreapp3.1\LEnglish.Common.pdb
 F:\Documents\LEnglish\LEnglish.DAL\obj\Debug\netcoreapp3.1\LEnglish.DAL.csproj.CopyComplete
+C:\Users\Dat\Desktop\LEnglish\LEnglish.DAL\obj\Debug\netcoreapp3.1\LEnglish.DAL.dll
+C:\Users\Dat\Desktop\LEnglish\LEnglish.DAL\obj\Debug\netcoreapp3.1\LEnglish.DAL.pdb
