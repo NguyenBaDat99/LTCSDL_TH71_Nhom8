@@ -1,12 +1,9 @@
 <header>
-  <!-- Font Awesome JS -->
-    <script defer src="https://use.fontawesome.com/releases/v5.0.13/js/solid.js" integrity="sha384-tzzSw1/Vo+0N5UhStP3bvwWPq+uvzCMfrN1fEFe+xBmv1C/AtVX5K0uZtmcHitFZ" crossorigin="anonymous"></script>
-    <script defer src="https://use.fontawesome.com/releases/v5.0.13/js/fontawesome.js" integrity="sha384-6OIrr52G08NpOFSZdxxz1xdNSndlD4vdcf/q2myIUVO0VsqaGHJsB0RaBE01VTOY" crossorigin="anonymous"></script>
   <nav
     class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3"
   >
     <div class="container">
-      <a class="navbar-brand" [routerLink]="['/']">LEnglish.Web</a>
+      <a class="navbar-brand" [routerLink]="['/']">LTCSDL.web</a>
       <button
         class="navbar-toggler"
         type="button"
@@ -46,9 +43,9 @@
             >
           </li>
           <li class="nav-item" [routerLinkActive]="['link-active']">
-            <a class="nav-link text-dark" [routerLink]="['/user']">
-              <i class="fas fa-users"></i>
-            </a>
+            <a class="nav-link text-dark" [routerLink]="['/user']"
+              ><img alt = "user" src="assets/user.png" >User</a
+            >
           </li>
         </ul>
       </div>

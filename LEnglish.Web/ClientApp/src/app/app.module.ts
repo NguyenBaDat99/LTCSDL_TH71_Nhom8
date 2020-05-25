@@ -1,33 +1,38 @@
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { RouterModule } from '@angular/router';
 
 import { AppComponent } from './app.component';
-import { AdminLayoutComponent } from './layouts/admin-layout/admin-layout.component';
-import { AuthLayoutComponent } from './layouts/auth-layout/auth-layout.component';
-
-import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
-
-import { AppRoutingModule } from './app.routing';
-import { ComponentsModule } from './components/components.module';
-
+import { NavMenuComponent } from './nav-menu/nav-menu.component';
+import { HomeComponent } from './home/home.component';
+import { ListeningComponent } from './listening/listening.component';
+import { ReadingComponent } from './reading/reading.component';
+import { WrittingComponent } from './writting/writting.component';
+import { UserComponent } from './user/user.component';
 
 @NgModule({
-  imports: [
-    BrowserAnimationsModule,
-    FormsModule,
-    HttpClientModule,
-    ComponentsModule,
-    NgbModule,
-    RouterModule,
-    AppRoutingModule
-  ],
   declarations: [
     AppComponent,
-    AdminLayoutComponent,
-    AuthLayoutComponent
+    NavMenuComponent,
+    HomeComponent,
+    ListeningComponent,
+    ReadingComponent,
+    WrittingComponent,
+    UserComponent
+  ],
+  imports: [
+    BrowserModule.withServerTransition({ appId: 'ng-cli-universal' }),
+    HttpClientModule,
+    FormsModule,
+    RouterModule.forRoot([
+      { path: '', component: HomeComponent, pathMatch: 'full' },
+      { path: 'listening', component: ListeningComponent },
+      { path: 'reading', component: ReadingComponent },
+      { path: 'writting', component: WrittingComponent },
+      { path: 'user', component: UserComponent },
+    ])
   ],
   providers: [],
   bootstrap: [AppComponent]
