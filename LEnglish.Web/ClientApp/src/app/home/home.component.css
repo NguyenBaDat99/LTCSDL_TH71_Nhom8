@@ -1,20 +1,11 @@
-.contain {
-  min-height: 50px;
-  width: 100%;
-  display: flex;
-  flex-wrap: wrap;
-    
-  }
-.item {
-  width: 100%;
-  min-height: 1px;
-  padding: 15px;
-  margin:auto;
-  text-align: center;
-  border-style: solid;
-  border-width: 1px;
+
+.col-3{
+  min-width: 30%;
 }
-.col{
-  flex: 1 0 25%;
-  max-width: 25%;
+.card {
+
+  padding: 0;
+}
+.carousel-inner {
+  border-radius: 4px;
 }
