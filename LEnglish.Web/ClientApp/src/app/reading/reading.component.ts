@@ -1,10 +1,14 @@
 import { Component, OnInit, Inject } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
+// import * as $ from "jquery";
+
 import 'jquery';
 import 'bootstrap';
-declare var $: any;
 
-@Component({
+import $ from "jquery";
+// declare var $:any;
+
+@Component({  
   selector: 'app-reading',
   templateUrl: './reading.component.html',
   styleUrls: ['./reading.component.css']
@@ -76,7 +80,8 @@ export class ReadingComponent implements OnInit {
     }
   }
   searchByKeyWord(){
-    var keyword = document.getElementById("searchKeyword").value;
+    // var keyword = nghy;
+    var keyword = $('#searchKeyword').val();
     this.searchProduct(1, keyword);
   }
 

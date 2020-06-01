@@ -1,6 +1,10 @@
 import { Component, OnInit, Inject, Renderer2 } from '@angular/core';
 import 'bootstrap';
-declare var $:any;
+import 'jquery';
+
+import $ from "jquery";
+import { DOCUMENT } from '@angular/common';
+// declare var $:any;
 
 @Component({
   selector: 'app-home',
@@ -10,20 +14,32 @@ declare var $:any;
 })
 export class HomeComponent implements OnInit{
 
-constructor(private _renderer2: Renderer2) { }
+constructor(
+  private renderer2: Renderer2,
+  @Inject(DOCUMENT) private _document) {
+
+   }
     
   ngOnInit() {
     $('.carousel').carousel({
         interval: 2000
     });
 
-    var script = document.createElement("script");
-    script.type = "text/javascript";
-    // let script = this._renderer2.createElement('script');
-    // script.type = 'application/ld+json';
-    script.text = '{!function () { var h = { s: "https://dict.laban.vn", w: 260, h: 260, hl: 2, th: 3 }; function loadScript(t, e) { var n = document.createElement("script"); n.type = "text/javascript", n.readyState ? n.onreadystatechange = function () { ("loaded" === n.readyState || "complete" === n.readyState) && (n.onreadystatechange = null, e()) } : n.onload = function () { e() }, n.src = t, q = document.getElementById("lbdict_plugin_frame"), q.parentNode.insertBefore(n, q) } setTimeout(function () { loadScript("https://stc-laban.zdn.vn/dictionary/js/plugin/lbdictplugin.frame.min.js", function () { lbDictPluginFrame.init(h) }) }, 1e3); }();};'
+    const s = this.renderer2.createElement('script');
+    s.type = 'text/javascript';
+    s.src = './assets/js/frameTranslate.js';
+    s.text = ``;
+    this.renderer2.appendChild(this._document.body, s);
+ 
+ 
 
-    document.appendChild(script);
+    // var script = document.createElement("script");
+    // script.type = "text/javascript";
+    // // let script = this._renderer2.createElement('script');
+    // // script.type = 'application/ld+json';
+    // script.text = '{!function () { var h = { s: "https://dict.laban.vn", w: 260, h: 260, hl: 2, th: 3 }; function loadScript(t, e) { var n = document.createElement("script"); n.type = "text/javascript", n.readyState ? n.onreadystatechange = function () { ("loaded" === n.readyState || "complete" === n.readyState) && (n.onreadystatechange = null, e()) } : n.onload = function () { e() }, n.src = t, q = document.getElementById("lbdict_plugin_frame"), q.parentNode.insertBefore(n, q) } setTimeout(function () { loadScript("https://stc-laban.zdn.vn/dictionary/js/plugin/lbdictplugin.frame.min.js", function () { lbDictPluginFrame.init(h) }) }, 1e3); }();};'
+
+    // document.appendChild(script);
   }
   
 }
