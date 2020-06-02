@@ -3,9 +3,11 @@ import { HttpClient } from '@angular/common/http';
 import { CookieService } from 'ngx-cookie-service';
 import 'bootstrap';
 import 'jquery';
+import * as bcrypt from 'bcryptjs';
 
 import $ from "jquery";
 // declare var $:any;
+// declare var require: any;
 
 @Component({
   selector: 'app-nav-menu',
@@ -52,18 +54,21 @@ export class NavMenuComponent  implements OnInit{
     // var matKhau = document.getElementById("matKhau").value;
     this.dsNguoiDung.data.forEach(nguoiDung => {
       if(nguoiDung.tenDangNhap == tenDN){
-        if(nguoiDung.matKhau == matKhau){
-          this.cookieService.set('maNguoiDung', nguoiDung.maNguoiDung);
-          this.cookieService.set('tenDangNhap', nguoiDung.tenDangNhap);
-          this.cookieService.set('tenNguoiDung', nguoiDung.tenNguoiDung);
-          this.cookieService.set('isLogged', 'true');
-          this.isLoged = true;
-          // alert("Đăng nhập thành công!");
-          $('#modalSignIn').modal('hide');
-          this.errorMessage = "";
-          // location.reload();
-          return;
-        }
+        bcrypt.compare(matKhau, nguoiDung.matKhau).then((result)=>{
+          if(result){
+            this.cookieService.set('maNguoiDung', nguoiDung.maNguoiDung);
+            this.cookieService.set('tenDangNhap', nguoiDung.tenDangNhap);
+            this.cookieService.set('tenNguoiDung', nguoiDung.tenNguoiDung);
+            this.cookieService.set('isLogged', 'true');
+            this.isLoged = true;
+            // alert("Đăng nhập thành công!");
+            $('#modalSignIn').modal('hide');
+            this.errorMessage = "";
+            // location.reload();
+            
+            return;
+          }          
+        });
         this.isLoged = false;
         // alert("Đăng nhập thất bại!");        
         return;
@@ -118,7 +123,15 @@ export class NavMenuComponent  implements OnInit{
       this.errorMessage = "Thiếu thông tin Tên người dùng!";
       return;
     }
+    if(matKhau == ""){
+      this.errorMessage = "Thiếu thông tin Mật khẩu";
+      return;
+    }
 
+    // var bcrypt = require('bcrypt');
+    const saltRounds = 10;
+    var matKhauDaBam = bcrypt.hashSync(matKhau, saltRounds);
+    // console.log(matKhauDaBam);
 
     if($('#male').checked){
       gioiTinh = "Nam";
@@ -131,7 +144,7 @@ export class NavMenuComponent  implements OnInit{
     var nguoidung: any ={
       maNguoiDung: maNguoiDung,
       tenDangNhap: tenDangNhap,
-      matKhau: matKhau,
+      matKhau: matKhauDaBam,
       tenNguoiDung: tenNguoiDung,
       gioiTinh: gioiTinh,
       ngaySinh: ngaySinh,
