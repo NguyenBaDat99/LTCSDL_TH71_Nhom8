@@ -12,6 +12,12 @@ import { ListeningComponent } from './listening/listening.component';
 import { ReadingComponent } from './reading/reading.component';
 import { WrittingComponent } from './writting/writting.component';
 import { UserComponent } from './user/user.component';
+import { AdminBaitapComponent } from './admin-baitap/admin-baitap.component';
+import { AdminCapbacComponent } from './admin-capbac/admin-capbac.component';
+import { AdminDanhmucComponent } from './admin-danhmuc/admin-danhmuc.component';
+import { AdminCauhoiComponent } from './admin-cauhoi/admin-cauhoi.component';
+import { AdminComponent } from './admin/admin.component';
+import { FrameTranslateComponent } from './frame-translate/frame-translate.component';
 
 @NgModule({
   declarations: [
@@ -21,14 +27,42 @@ import { UserComponent } from './user/user.component';
     ListeningComponent,
     ReadingComponent,
     WrittingComponent,
-    UserComponent
+    UserComponent,
+    AdminBaitapComponent,
+    AdminCapbacComponent,
+    AdminDanhmucComponent,
+    AdminCauhoiComponent,
+    AdminComponent,
+    FrameTranslateComponent
   ],
   imports: [
     BrowserModule.withServerTransition({ appId: 'ng-cli-universal' }),
     HttpClientModule,
     FormsModule,
     RouterModule.forRoot([
-      { path: '', component: HomeComponent, pathMatch: 'full' },
+      {path: '', component: HomeComponent, pathMatch: 'full' },
+      { 
+        path: 'admin',
+        component: AdminComponent,
+        children: [
+          {
+            path: '',
+            component: AdminCapbacComponent
+          },
+          {
+            path: 'danhmuc',
+            component: AdminDanhmucComponent
+          },
+          {
+            path: 'baitap',
+            component: AdminBaitapComponent
+          },
+          {
+            path: 'cauhoi',
+            component: AdminCauhoiComponent
+          }
+        ]
+      },
       { path: 'listening', component: ListeningComponent },
       { path: 'reading', component: ReadingComponent },
       { path: 'writting', component: WrittingComponent },

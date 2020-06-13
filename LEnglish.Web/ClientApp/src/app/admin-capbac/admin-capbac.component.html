@@ -1,0 +1,120 @@
+<nav class="navbar navbar-light bg-light">
+    <button class="btn btn-light" (click)="ngOnInit()" style="font-size: 1.5rem;">Danh sách cấp bậc</button>
+    &emsp;
+    <form class="form-inline">
+        <button class="btn btn-dark" (click)="openModalCreateUpdate(true, null)">Thêm cấp bậc mới</button>
+        &nbsp;
+        <input class="form-control mr-sm-2" id="searchKeyword" type="search" placeholder="Nhập thông tin"
+            aria-label="Search" required maxlength="20">
+        <!-- <button class="btn btn-outline-dark my-2 my-sm-0" type="submit">Tìm kiếm</button> -->
+        <input type="submit" name="btnTimKiem" class="btn btn-outline-dark" value="Tìm kiếm"
+            (click)="searchByKeyWord()">
+    </form>
+</nav>
+
+<table class='table table-striped' aria-labelledby="tableLabel" *ngIf="dscapbac.totalRecord">
+    <thead>
+        <tr>
+            <th>Mã cấp bậc</th>
+            <th>Tên cấp bậc</th>
+            <th>Mô tả</th>
+            <th>Ghi chú</th>
+            <th>Thao tác</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let capbac of dscapbac.data">
+            <td>{{ capbac.maCapBac }}</td>
+            <td>{{ capbac.tenCapBac }}</td>
+            <td>{{ capbac.moTa }}</td>
+            <td>{{ capbac.ghiChu }}</td>
+            <td>
+                <button type="button" class="btn btn-outline-info" (click)="openModalCreateUpdate(false, capbac)">
+                    Sửa
+                </button>
+                &nbsp;
+                <button type="button" class="btn btn-outline-danger" (click)="openModalRemove(capbac)">
+                    Xóa
+                </button>
+            </td>
+        </tr>
+    </tbody>
+</table>
+
+<nav aria-label="Page navigation example">
+    <ul class="pagination">
+        <li class="page-item">
+            <a class="page-link" href="javascript:void(0);" (click)="searchPrevious()" aria-label="Previous">
+                <span aria-hidden="true">&laquo;</span>
+            </a>
+        </li>
+        <li class="page-item disabled"><a class="page-link">{{dscapbac.page}}</a></li>
+        <li class="page-item">
+            <a class="page-link" href="javascript:void(0);" (click)="searchNext()" aria-label="Next">
+                <span aria-hidden="true">&raquo;</span>
+            </a>
+        </li>
+    </ul>
+</nav>
+
+<div class="modal fade" id="modalCreateUpdate" data-backdrop="static" tabindex="-1" role="dialog"
+    aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel" *ngIf="!isEdit">Thêm cấp bậc mới</h5>
+                <h5 class="modal-title" id="exampleModalLabel" *ngIf="isEdit">Sửa cấp bậc</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <div class="row">
+                    <div class="form-group col-5">
+                        <label>Mã cấp bậc</label>
+                        <input class="form-control" [(ngModel)]="capbac.maCapBac" *ngIf="!isEdit">
+                        <input class="form-control" [(ngModel)]="capbac.maCapBac" *ngIf="isEdit" readonly>
+                    </div>
+                    <div class="form-group col-7">
+                        <label>Tên cấp bậc</label>
+                        <input class="form-control" [(ngModel)]="capbac.tenCapBac">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label>Mô tả</label>
+                    <textarea class="form-control" [(ngModel)]="capbac.moTa"></textarea>
+                </div>
+                <div class="form-group">
+                    <label>Ghi chú</label>
+                    <textarea class="form-control" [(ngModel)]="capbac.ghiChu"></textarea>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Hủy bỏ</button>
+                <button type="button" class="btn btn-success" *ngIf="isEdit" (click)="updateCapbac()">Sửa</button>
+                <button type="button" class="btn btn-info" *ngIf="!isEdit" (click)="createCapbac()">Thêm</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal fade" id="modalRemove" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+    aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Xóa cấp bậc</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                Bạn có muốn xóa cấp bậc: {{capbac.tenCapBac}} ( {{capbac.maCapBac}} )
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Hủy bỏ</button>
+                <button type="button" class="btn btn-danger" (click)="removeCapBac(capbac)">Xóa</button>
+            </div>
+        </div>
+    </div>
+</div>

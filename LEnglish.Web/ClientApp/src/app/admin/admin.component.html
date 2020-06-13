@@ -1,0 +1,16 @@
+<div class="container" class="containerAdmin" >
+    <div class="row">
+      <div class="col-2">
+        <ul class="list-group">
+          <li class="list-group-item list-group-item-action"><a class="nav-link text-dark" [routerLink]="['/admin/']" style="padding: 0;">Quản lý cấp bậc</a></li>
+          <li class="list-group-item list-group-item-action"><a class="nav-link text-dark" [routerLink]="['/admin/danhmuc']" style="padding: 0;">Quản lý danh mục</a></li>
+          <li class="list-group-item list-group-item-action"><a class="nav-link text-dark" [routerLink]="['/admin/baitap']" style="padding: 0;">Quản lý bài tập</a></li>
+          <li class="list-group-item list-group-item-action"><a class="nav-link text-dark" [routerLink]="['/admin/cauhoi']" style="padding: 0;">Quản lý câu hỏi</a></li>
+          
+        </ul>
+      </div>
+      <div class="col-10">
+       <router-outlet></router-outlet>
+      </div>
+    </div>
+  </div>

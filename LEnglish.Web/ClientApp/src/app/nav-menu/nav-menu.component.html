@@ -1,190 +1,264 @@
 <header>
-  <nav
-    class="navbar navbar-expand-sm navbar-toggleable-sm navbar-dark bg-dark border-bottom box-shadow mb-3"
-  >
+  <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-dark bg-dark border-bottom box-shadow mb-3">
     <div class="container">
       <a class="navbar-brand" [routerLink]="['/']">LEnglish</a>
-      <button
-        class="navbar-toggler"
-        type="button"
-        data-toggle="collapse"
-        data-target=".navbar-collapse"
-        aria-label="Toggle navigation"
-        [attr.aria-expanded]="isExpanded"
-        (click)="toggle()"
-      >
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target=".navbar-collapse"
+        aria-label="Toggle navigation" [attr.aria-expanded]="isExpanded" (click)="toggle()">
         <span class="navbar-toggler-icon"></span>
       </button>
-      <div
-        class="navbar-collapse collapse d-sm-inline-flex flex-sm-row-reverse"
-        [ngClass]="{ show: isExpanded }"
-      >
+      <div class="navbar-collapse collapse d-sm-inline-flex flex-sm-row-reverse" [ngClass]="{ show: isExpanded }">
         <ul class="navbar-nav flex-grow">
-          <li
-            class="nav-item"
-            [routerLinkActive]="['link-active']"
-            [routerLinkActiveOptions]="{ exact: true }"
-          >
+          <li *ngIf="!isAdmin" class="nav-item" [routerLinkActive]="['link-active']"
+            [routerLinkActiveOptions]="{ exact: true }">
             <a class="nav-link text-light" [routerLink]="['/']">Trang chủ</a>
           </li>
-          <li class="nav-item" [routerLinkActive]="['link-active']">
-            <a class="nav-link text-light" [routerLink]="['/listening']"
-              >Listening</a
-            >
+          <li *ngIf="!isAdmin" class="nav-item" [routerLinkActive]="['link-active']">
+            <a class="nav-link text-light" [routerLink]="['/listening']">Listening</a>
           </li>
-          <li class="nav-item" [routerLinkActive]="['link-active']">
-            <a class="nav-link text-light" [routerLink]="['/reading']"
-              >Reading</a
-            >
+          <li *ngIf="!isAdmin" class="nav-item" [routerLinkActive]="['link-active']">
+            <a class="nav-link text-light" [routerLink]="['/reading']">Reading</a>
           </li>
-          <li class="nav-item" [routerLinkActive]="['link-active']">
-            <a class="nav-link text-light" [routerLink]="['/writting']"
-              >Writting</a
-            >
+          <li *ngIf="!isAdmin" class="nav-item" [routerLinkActive]="['link-active']">
+            <a class="nav-link text-light" [routerLink]="['/writting']">Writting</a>
           </li>
-          <!-- <li class="nav-item" [routerLinkActive]="['link-active']">
-            <a class="nav-link text-dark" [routerLink]="['/user']"
-              ><img alt = "user" src="assets/Images/user.png" >User</a
-            >
-          </li> -->
           <li>
             <div *ngIf="!isLoged">
-              <button type="button" class="btn btn-info" data-toggle="modal" data-target="#modalSignIn" (click)="setEmptyErrorMsg()">
+              <button type="button" class="btn btn-info" (click)="openModalSignIn()">
                 Đăng nhập
-              </button>              
-            </div>            
+              </button>
+            </div>
             <div *ngIf="isLoged">
               <div class="dropdown">
-                <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton"
+                  data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                   {{this.cookieService.get('tenDangNhap')}}
                 </button>
                 <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                  <a class="dropdown-item" (click)="logout()">Đăng xuất</a>
+                  <button class="dropdown-item" (click)="openModalInfo()" *ngIf="!isAdmin">Tùy chỉnh</button>
+                  <button class="dropdown-item" (click)="openModalChangePass()" *ngIf="isAdmin">Đổi mật khẩu</button>
+                  <button class="dropdown-item" (click)="logout()">Đăng xuất</button>
                 </div>
               </div>
-            </div>            
+            </div>
           </li>
         </ul>
       </div>
     </div>
   </nav>
 
-
-<!-- Modal Sign in-->
-<div class="modal fade" id="modalSignIn" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-  <div class="modal-dialog" style="width:350px">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel">Nhập thông tin</h5>
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
+  <!-- Modal Sign in-->
+  <div class="modal fade" id="modalSignIn" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+    aria-hidden="true">
+    <div class="modal-dialog" style="width:350px">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">Nhập thông tin</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <form>
+            <div class="form-group">
+              <label>Tên đăng nhập</label>
+              <input class="form-control" id="tenDangNhap">
+            </div>
+            <div class="form-group">
+              <label>Mật khẩu</label>
+              <input type="password" class="form-control" id="matKhau">
+            </div>
+            <div class="alert alert-danger" role="alert" *ngIf="errorMessage">
+              {{this.errorMessage}}
+            </div>
+            <button type="submit" class="btn btn-primary" (click)="login()">Đăng nhập</button>
+            &nbsp;
+            <button type="button" class="btn btn-secondary" data-dismiss="modal">Hủy</button>
+          </form>
+        </div>
+        <div class="modal-footer">
+          <span>Bạn chưa có tài khoản?</span>
+          &nbsp;
+          <button type="submit" class="btn btn-outline-dark right" data-dismiss="modal" (click)=openModalSignUp()>Đăng ký</button>
+        </div>
       </div>
-      <div class="modal-body">
-        <form>
+    </div>
+  </div>
+
+  <!-- Modal Sign up-->
+  <div class="modal fade" id="modalSignUp" data-backdrop="static" data-keyboard="false" tabindex="-1" role="dialog"
+    aria-labelledby="staticBackdropLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="staticBackdropLabel">Đăng ký tài khoản</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+            <div class="form-group">
+              <label>Tên đăng nhập</label>
+              <input class="form-control" [(ngModel)]="nguoidung.tenDangNhap" id="tenDangNhapSignUp" >
+            </div>
+            <div class="row">
+              <div class="form-group col">
+                <label>Mật khẩu</label>
+                <input type="password" class="form-control" id="matKhauSignUp">
+              </div>
+              <div class="form-group col">
+                <label>Xác nhận mật khẩu</label>
+                <input type="password" class="form-control" id="xacNhanMatKhauSignUp">
+              </div>
+            </div>
+            <div class="row">
+              <div class="form-group col-8">
+                <label>Tên người dùng</label>
+                <input class="form-control" [(ngModel)]="nguoidung.tenNguoiDung" id="tenNguoiDungSignUp" >
+              </div>
+              <div class="form-group col-4">
+                <label>Giới tính</label>
+                <select class="form-control" [(ngModel)]="nguoidung.gioiTinh">
+                  <option>Nam</option>
+                  <option>Nữ</option>
+                  <option aria-checked="true">Khác</option>
+                </select>
+              </div>
+              
+            </div>
+            <div class="row">
+              <div class="form-group col-7">
+                <label>Email</label>
+                <input type="email" class="form-control" [(ngModel)]="nguoidung.email" id="emailSignUp">
+              </div>
+              <div class="form-group col-5">
+                <label>Ngày sinh</label>
+                &nbsp; &nbsp;
+                <input class="form-control" type="date" id="ngaySinhSignUp" name="ngaySinh" value="2020-02-02" max="2020-02-02">
+              </div>
+            </div>
+          <div class="alert alert-danger" role="alert" *ngIf="errorMessage">
+            {{this.errorMessage}}
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button type="submit" class="btn btn-primary" (click)="signUp()">Đăng ký</button>
+          &nbsp;
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Hủy</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Modal change info-->
+  <div class="modal fade" id="modalChangeInfo" data-backdrop="static" tabindex="-1" role="dialog"
+    aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="staticBackdropLabel">Tùy chỉnh thông tin</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
           <div class="form-group">
             <label>Tên đăng nhập</label>
-            <input class="form-control" id="tenDangNhap">
+            <input class="form-control" [(ngModel)]="nguoidung.tenDangNhap" readonly>
           </div>
-          <div class="form-group">
-            <label>Mật khẩu</label>
-            <input type="password" class="form-control" id="matKhau">
+          <div class="row">
+            <div class="form-group col-8">
+              <label>Tên người dùng</label>
+              <input class="form-control" id="tenNguoiDungChangeInfo" [(ngModel)]="nguoidung.tenNguoiDung">
+            </div>
+            <div class="form-group col-4">
+              <label>Giới tính</label>
+              <select class="form-control" [(ngModel)]="nguoidung.gioiTinh">
+                <option>Nam</option>
+                <option>Nữ</option>
+                <option>Khác</option>
+              </select>
+            </div>            
+          </div>
+          <div class="row">
+            <div class="form-group col-7">
+              <label>Email</label>
+              <input type="email" class="form-control" id="emailChangeInfo" [(ngModel)]="nguoidung.email">
+            </div>
+            <div class="form-group col-5">
+              <label>Ngày sinh</label>
+              &nbsp; &nbsp;
+              <input class="form-control" [value]="nguoidung.ngaySinh.substr(0, 10)" readonly>
+            </div>
+          </div>
+          <div class="form-group col">
+            <label>Xác nhận mật khẩu</label>
+            <input type="password" class="form-control" id="xacNhanMatKhauChangeInfo">
           </div>
           <div class="alert alert-danger" role="alert" *ngIf="errorMessage">
             {{this.errorMessage}}
           </div>
-          <button type="submit" class="btn btn-primary" (click)="login()">Đăng nhập</button>
+          <button type="submit" class="btn btn-success" (click)="changeInfo()">Lưu</button>
           &nbsp;
           <button type="button" class="btn btn-secondary" data-dismiss="modal">Hủy</button>
-        </form>
-      </div>
-      <div class="modal-footer">
-        <span>Bạn chưa có tài khoản?</span>
-          &nbsp;
-          <button type="submit" class="btn btn-outline-dark right" data-dismiss="modal" data-toggle="modal" data-target="#modalSignUp" (click)=setEmptyErrorMsg()>Đăng ký</button>
-      </div>
-    </div>
-  </div>
-</div>
-
-<!-- Modal Sign up-->
-<div class="modal fade" id="modalSignUp" data-backdrop="static" data-keyboard="false" tabindex="-1" role="dialog" aria-labelledby="staticBackdropLabel" aria-hidden="true">
-  <div class="modal-dialog">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title" id="staticBackdropLabel">Đăng ký tài khoản</h5>
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
-      </div>
-      <div class="modal-body">
-        <form>
-          <div class="form-group">
-            <label>Tên đăng nhập</label>
-            <input class="form-control" id="tenDangNhapSignUp">
-          </div>
-          <div class="row">
-            <div class="form-group col">
-              <label>Mật khẩu</label>
-              <input type="password" class="form-control" id="matKhauSignUp">
-            </div>
-            <div class="form-group col">
-              <label>Xác nhận mật khẩu</label>
-              <input type="password" class="form-control" id="xacNhanMatKhauSignUp">
-            </div>
-          </div>
-          <div class="row">
-            <div class="form-group col-5">
-              <label>Tên người dùng</label>
-              <input class="form-control" id="tenNguoiDungSignUp">
-            </div>
-            <div class="form-group col-7">
-              <label>Email</label>
-              <input type="email" class="form-control" id="emailSignUp">
-            </div>
-          </div>
-          
-          <div class="form-group">
-            <label>Giới tính</label>
-            <div class="row">
-              <div class="col" style="text-align: center;">
-                <input type="radio" id="male" name="gender" value="Nam">
-                &nbsp;
-                <label for="male">Nam</label>
-              </div>
-              <div class="col" style="text-align: center;">
-                <input type="radio" id="female" name="gender" value="Nữ">
-                &nbsp;
-                <label for="female">Nữ</label>
-              </div>
-              <div class="col" style="text-align: center;">
-                <input type="radio" id="other" name="gender" value="Khác" checked>
-                &nbsp;
-                <label for="other">Khác</label>
-              </div>
-          </div>
-          </div>
-          <div class="form-group">
-            <label>Ngày sinh</label>
-            &nbsp; &nbsp;
-            <input type="date" id="ngaySinhSignUp" name="ngaySinh" value="2020-02-02" max="2020-02-02" style="width: 60%; text-align: center;">
-          </div>
-          
-          
-        </form>
-
-        <div class="alert alert-danger" role="alert" *ngIf="errorMessage">
-          {{this.errorMessage}}
         </div>
-
-      </div>
-      <div class="modal-footer">
-        <button type="submit" class="btn btn-primary" (click)="signUp()">Đăng ký</button>
-          &nbsp;
-          <button type="button" class="btn btn-secondary" data-dismiss="modal">Hủy</button>
+        <div class="modal-footer">
+          <button type="submit" class="btn btn-warning" data-dismiss="modal" data-toggle="modal"
+            data-target="#modalChangePass" (click)=setEmptyErrorMsg()>Đổi mật khẩu</button>
+        </div>
       </div>
     </div>
   </div>
-</div>
+
+  <!-- Modal change password-->
+  <div class="modal fade" id="modalChangePass" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+    aria-hidden="true">
+    <div class="modal-dialog" style="width:350px">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">Đổi mật khẩu</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <form>
+            <div class="form-group">
+              <label>Mật khẩu cũ</label>
+              <input type="password" class="form-control" id="matKhauCuChangePass">
+            </div>
+            <div class="form-group">
+              <label>Mật khẩu mới</label>
+              <input type="password" class="form-control" id="matKhauMoiChangePass">
+            </div>
+            <div class="form-group">
+              <label>Xác nhận mật khẩu mới</label>
+              <input type="password" class="form-control" id="xacNhanMatKhauMoiChangePass">
+            </div>
+            <div class="alert alert-danger" role="alert" *ngIf="errorMessage">
+              {{this.errorMessage}}
+            </div>
+            <button type="submit" class="btn btn-success" (click)="changePass()">Lưu</button>
+            &nbsp;
+            <button type="button" class="btn btn-secondary" data-dismiss="modal">Hủy</button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <button *ngIf="!isAdmin" class="btn btn-success" style="right: 10px;bottom: 10px;position: fixed;" data-toggle="modal"
+    data-target="#modelTranslate">
+    Dịch
+  </button>
+  <div class="modal fade" id="modelTranslate" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+    aria-hidden="true">
+    <div class="modal-dialog" style="width: 395px; height: 420px;">
+      <div class="modal-content">
+        <div class="modal-body">
+          <app-frame-translate></app-frame-translate>
+        </div>
+      </div>
+    </div>
+  </div>
 
 </header>

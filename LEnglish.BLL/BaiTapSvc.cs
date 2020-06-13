@@ -86,7 +86,7 @@ namespace LEnglish.BLL
 
         public object SearchBaiTap(string keyword, int page, int size)
         {
-            var bt = All.Where(x => x.TenBaiTap.Contains(keyword));
+            var bt = All.Where(x => x.MaBaiTap.Contains(keyword)).Union(All.Where(x => x.TenBaiTap.Contains(keyword)));
 
             var offset = (page - 1) * size;
             var total = bt.Count();

@@ -1,0 +1,128 @@
+<nav class="navbar navbar-light bg-light">
+    <button class="btn btn-light" (click)="ngOnInit()" style="font-size: 1.5rem;">Danh sách danh mục</button>
+    &emsp;
+    <form class="form-inline">
+        <button class="btn btn-dark" (click)="openModalCreateUpdate(true, null)">Thêm danh mục mới</button>
+        &nbsp;
+        <input class="form-control mr-sm-2" id="searchKeyword" type="search" placeholder="Nhập thông tin"
+            aria-label="Search" required maxlength="20">
+        <!-- <button class="btn btn-outline-dark my-2 my-sm-0" type="submit">Tìm kiếm</button> -->
+        <input type="submit" name="btnTimKiem" class="btn btn-outline-dark" value="Tìm kiếm"
+            (click)="searchByKeyWord()">
+    </form>
+</nav>
+
+<table class='table table-striped' aria-labelledby="tableLabel" *ngIf="dsdanhmuc.totalRecord">
+    <thead>
+        <tr>
+            <th>Mã danh mục</th>
+            <th>Tên danh mục</th>
+            <th>Cấp bậc</th>
+            <th>Mô tả</th>
+            <th>Ghi chú</th>
+            <th>Thao tác</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let danhmuc of dsdanhmuc.data">
+            <td>{{ danhmuc.maDanhMuc }}</td>
+            <td>{{ danhmuc.tenDanhMuc }}</td>
+            <td>{{ danhmuc.capBac }}</td>
+            <td>{{ danhmuc.moTa }}</td>
+            <td>{{ danhmuc.ghiChu }}</td>
+            <td>
+                <button type="button" class="btn btn-outline-info" (click)="openModalCreateUpdate(false, danhmuc)">
+                    Sửa
+                </button>
+                &nbsp;
+                <button type="button" class="btn btn-outline-danger" (click)="openModalRemove(danhmuc)">
+                    Xóa
+                </button>
+            </td>
+        </tr>
+    </tbody>
+</table>
+
+<nav aria-label="Page navigation example">
+    <ul class="pagination">
+        <li class="page-item">
+            <a class="page-link" href="javascript:void(0);" (click)="searchPrevious()" aria-label="Previous">
+                <span aria-hidden="true">&laquo;</span>
+            </a>
+        </li>
+        <li class="page-item disabled"><a class="page-link">{{dsdanhmuc.page}}</a></li>
+        <li class="page-item">
+            <a class="page-link" href="javascript:void(0);" (click)="searchNext()" aria-label="Next">
+                <span aria-hidden="true">&raquo;</span>
+            </a>
+        </li>
+    </ul>
+</nav>
+
+<div class="modal fade" id="modalCreateUpdate" data-backdrop="static" tabindex="-1" role="dialog"
+    aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel" *ngIf="!isEdit">Thêm danh mục mới</h5>
+                <h5 class="modal-title" id="exampleModalLabel" *ngIf="isEdit">Sửa danh mục</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <div class="row">
+                    <div class="form-group col-3">
+                        <label>Mã danh mục</label>
+                        <input class="form-control" [(ngModel)]="danhmuc.maDanhMuc" *ngIf="!isEdit">
+                        <input class="form-control" [(ngModel)]="danhmuc.maDanhMuc" *ngIf="isEdit" readonly>
+                    </div>
+                    <div class="form-group col-5">
+                        <label>Tên danh mục</label>
+                        <input class="form-control" [(ngModel)]="danhmuc.tenDanhMuc">
+                    </div>
+                    <div class="form-group col-4">
+                        <label>Cấp bậc</label><br>
+                        <select class="form-control" [(ngModel)]="danhmuc.capBac">
+                                <option *ngFor="let capbac of dscapbac.data" >{{capbac.maCapBac}}</option>
+                        </select>
+                    </div>
+                </div>                
+                <div class="form-group">
+                    <label>Mô tả</label>
+                    <textarea class="form-control" [(ngModel)]="danhmuc.moTa"></textarea>
+                </div>
+                <div class="form-group">
+                    <label>Ghi chú</label>
+                    <textarea class="form-control" [(ngModel)]="danhmuc.ghiChu"></textarea>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Hủy bỏ</button>
+                <button type="button" class="btn btn-success" *ngIf="isEdit" (click)="updateDanhMuc()">Sửa</button>
+                <button type="button" class="btn btn-info" *ngIf="!isEdit" (click)="createDanhMuc()">Thêm</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal fade" id="modalRemove" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+    aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Xóa danh mục</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                Bạn có muốn xóa danh mục: {{danhmuc.tenDanhMuc}} ( {{danhmuc.maDanhMuc}} )
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Hủy bỏ</button>
+                <button type="button" class="btn btn-danger" (click)="removeDanhMuc(danhmuc)">Xóa</button>
+            </div>
+        </div>
+    </div>
+</div>

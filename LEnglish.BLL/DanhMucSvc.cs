@@ -82,7 +82,7 @@ namespace LEnglish.BLL
 
         public object SearchDanhMuc(string keyword, int page, int size)
         {
-            var dm = All.Where(x => x.TenDanhMuc.Contains(keyword));
+            var dm = All.Where(x => x.TenDanhMuc.Contains(keyword)).Union(All.Where(x => x.MaDanhMuc.Contains(keyword)));
 
             var offset = (page - 1) * size;
             var total = dm.Count();

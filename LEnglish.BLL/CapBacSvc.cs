@@ -80,7 +80,7 @@ namespace LEnglish.BLL
 
         public object SearchCapBac(string keyword, int page, int size)
         {
-            var cb = All.Where(x => x.TenCapBac.Contains(keyword));
+            var cb = All.Where(x => x.TenCapBac.Contains(keyword)).Union(All.Where(x => x.MaCapBac.Contains(keyword)));
 
             var offset = (page - 1) * size;
             var total = cb.Count();

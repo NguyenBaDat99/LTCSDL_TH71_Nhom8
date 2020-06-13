@@ -1,0 +1,212 @@
+<nav class="navbar navbar-light bg-light">
+    <button class="btn btn-light" (click)="ngOnInit()" style="font-size: 1.5rem;">Danh sách câu hỏi</button>
+    &emsp;
+    <form class="form-inline">
+        <button class="btn btn-info" (click)="changeShowNoiDung()" *ngIf="isShowNoiDung">Ẩn nội dung</button>
+        <button class="btn btn-outline-info" (click)="changeShowNoiDung()" *ngIf="!isShowNoiDung">Hiện nội dung</button>
+        &nbsp;
+        <button class="btn btn-dark" (click)="openModalCreateUpdate(true, null)">Thêm câu hỏi mới</button>
+        &nbsp;
+        <input class="form-control mr-sm-2" id="searchKeyword" type="search" placeholder="Nhập thông tin"
+            aria-label="Search" required maxlength="20">
+        <!-- <button class="btn btn-outline-dark my-2 my-sm-0" type="submit">Tìm kiếm</button> -->
+        <input type="submit" name="btnTimKiem" class="btn btn-outline-dark" value="Tìm kiếm"
+            (click)="searchByKeyWord()">
+    </form>
+</nav>
+
+
+<table class='table table-striped' aria-labelledby="tableLabel" *ngIf="dscauhoi.totalRecord" >
+    <thead *ngIf="isShowNoiDung">
+        <tr>
+            <th>Mã câu hỏi</th>
+            <th>Nội dung câu hỏi</th>
+            <th>Câu trả lời</th>
+            <th>Đáp án</th>
+            <th>Thao tác</th>
+        </tr>
+    </thead>
+    <tbody *ngIf="isShowNoiDung">
+        <tr *ngFor="let cauhoi of dscauhoi.data">
+            <td>{{ cauhoi.maCauHoi }}</td>
+            <td>{{ cauhoi.noiDungCauHoi }}</td>
+            <td>{{ cauhoi.cauTraLoi }}</td>
+            <td>{{ cauhoi.dapAn }}</td>
+            <td>
+                <button type="button" class="btn btn-outline-info" (click)="openModalCreateUpdate(false, cauhoi)">
+                    Sửa
+                </button>
+                &nbsp;
+                <button type="button" class="btn btn-outline-danger" (click)="openModalRemove(cauhoi)">
+                    Xóa
+                </button>
+            </td>
+        </tr>
+    </tbody>
+
+    <thead *ngIf="!isShowNoiDung">
+        <tr>
+            <th>Mã câu hỏi</th>
+            <th>Nội dung</th>
+            <th>Bài tập</th>
+            <th>Ghi chú</th>
+            <th>Thao tác</th>
+        </tr>
+    </thead>
+    <tbody *ngIf="!isShowNoiDung">
+        <tr *ngFor="let cauhoi of dscauhoi.data">
+            <td>{{ cauhoi.maCauHoi }}</td>
+            <td>
+                <Button type="button" class="btn btn-outline-dark" (click)="openModalNoiDungCH(cauhoi)">
+                    Hiện
+                </Button>
+            </td>
+            <td>{{ cauhoi.baiTap }}</td>
+            <td>{{ cauhoi.ghiChu }}</td>
+            <td>
+                <button type="button" class="btn btn-outline-info" (click)="openModalCreateUpdate(false, cauhoi)">
+                    Sửa
+                </button>
+                &nbsp;
+                <button type="button" class="btn btn-outline-danger" (click)="openModalRemove(cauhoi)">
+                    Xóa
+                </button>
+            </td>
+        </tr>
+    </tbody>
+</table>
+
+<nav aria-label="Page navigation example">
+    <ul class="pagination">
+        <li class="page-item">
+            <a class="page-link" href="javascript:void(0);" (click)="searchPrevious()" aria-label="Previous">
+                <span aria-hidden="true">&laquo;</span>
+            </a>
+        </li>
+        <li class="page-item disabled"><a class="page-link">{{dscauhoi.page}}</a></li>
+        <li class="page-item">
+            <a class="page-link" href="javascript:void(0);" (click)="searchNext()" aria-label="Next">
+                <span aria-hidden="true">&raquo;</span>
+            </a>
+        </li>
+    </ul>
+</nav>
+
+
+<div class="modal fade" id="modalCreateUpdate" data-backdrop="static" tabindex="-1" role="dialog"
+    aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel" *ngIf="!isEdit">Thêm câu hỏi mới</h5>
+                <h5 class="modal-title" id="exampleModalLabel" *ngIf="isEdit">Sửa câu hỏi</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <div class="row">
+                    <div class="form-group col-6">
+                        <label>Bài tập</label>
+                        <select class="form-control" [(ngModel)]="cauhoi.baiTap" *ngIf="!isEdit">
+                            <option *ngFor="let baitap of dsbaitap.data">{{baitap.maBaiTap}}</option>
+                        </select>
+                        <input class="form-control" [(ngModel)]="cauhoi.baiTap" *ngIf="isEdit" readonly>
+                    </div>
+                    <div class="form-group col-6">
+                        <label>Mã câu hỏi</label>
+                        <input class="form-control" [(ngModel)]="cauhoi.maCauHoi" *ngIf="!isEdit">
+                        <input class="form-control" [(ngModel)]="cauhoi.maCauHoi" *ngIf="isEdit" readonly>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label>Nội dung câu hỏi</label>
+                    <textarea class="form-control" [(ngModel)]="cauhoi.noiDungCauHoi"></textarea>
+                </div>
+                <div class="form-group">
+                    <label>Câu trả lời (mỗi câu trả lời cách nhau bằng dấu /)</label>
+                    <textarea class="form-control" [(ngModel)]="cauhoi.cauTraLoi" placeholder="AnswerA/AnswerB/AnswerC"
+                        style="height: 100px;"></textarea>
+                </div>
+                <div class="form-group">
+                    <label>Đáp án</label>
+                    <textarea class="form-control" [(ngModel)]="cauhoi.dapAn" placeholder="AnswerA"></textarea>
+                </div>
+                <div class="form-group">
+                    <label>Ghi chú</label>
+                    <textarea class="form-control" [(ngModel)]="cauhoi.ghiChu"></textarea>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Hủy bỏ</button>
+                <button type="button" class="btn btn-success" *ngIf="isEdit" (click)="updateCauHoi()">Sửa</button>
+                <button type="button" class="btn btn-info" *ngIf="!isEdit" (click)="createCauHoi()">Thêm</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal fade" id="modalRemove" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+    aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Xóa câu hỏi</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                Bạn có muốn xóa câu hỏi: {{cauhoi.maCauHoi}}
+                <br>
+                Nội dung câu hỏi: {{cauhoi.noiDungCauHoi}}
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Hủy bỏ</button>
+                <button type="button" class="btn btn-danger" (click)="removeCauHoi(cauhoi)">Xóa</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal fade" id="modalNoiDungCH" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+    aria-hidden="true">
+    <div class="modal-dialog modal-dialog-scrollable modal-lg modal-dialog-centered">
+        <div class="modal-content" style="width:700px">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Nội dung câu hỏi {{cauhoi.maCauHoi}}</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <div class="row">
+                    <div class="col-2">
+                        <strong>Câu hỏi:</strong>
+                    </div>
+                    <div class="col-8">
+                        {{cauhoi.noiDungCauHoi}}
+                    </div>
+                </div>
+                <br>
+                <div class="row">
+                    <div class="col-2">
+                        <strong> Câu trả lời:</strong>
+                    </div>
+                    <div class="col-8">
+                        {{cauhoi.cauTraLoi}}
+                    </div>
+                </div>
+                <br>
+                <div class="row">
+                    <div class="col-2">
+                        <strong>Đáp án:</strong>
+                    </div>
+                    <div class="col-8">
+                        {{cauhoi.dapAn}}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
