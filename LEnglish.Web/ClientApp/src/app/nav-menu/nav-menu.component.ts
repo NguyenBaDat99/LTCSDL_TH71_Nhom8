@@ -221,6 +221,7 @@ export class NavMenuComponent implements OnInit {
     if (this.errorMessage == "") {
       bcrypt.compare(xacNhanMatKhau, this.cookieService.get('matKhau')).then((result) => {
         if (result) {
+          this.nguoidung.matKhau = this.cookieService.get('matKhau');
           this.http.post('https://localhost:44318/api/NguoiDung/update-nguoiDung', this.nguoidung).subscribe(result => {
             var res: any = result;
             alert("Sửa thông tin tài khoản thành công!");
