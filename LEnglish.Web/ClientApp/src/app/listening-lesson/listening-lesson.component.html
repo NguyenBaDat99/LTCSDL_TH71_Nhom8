@@ -1,0 +1,103 @@
+<div *ngIf = "ielt">
+    <h1>IELTS</h1>
+    <div class="view-header">
+        <p>Are you a beginner (CEFR level A1) learner of English? This section offers listening practice
+            to help you understand familiar words and basic phrases when people speak slowly and clearly.
+            Situations include meeting people, shopping and conversations at work.</p>
+
+        <p>Each lesson has a preparation task, an audio recording and two tasks to check your understanding
+            and to practise a variety of listening skills. Make a start today.
+        </p>
+    </div>
+    <h2>Choose a listening lesson</h2>
+    <div class="view-content" *ngIf = "dsbaiNghe">
+        <div class="row" *ngFor="let bainghe of dsbaiNghe.data">
+            <div class="card col-3" class="cardgroup" style=" margin-right: auto;">
+                <img [src]="chuoi" class="card-img-top">
+                <div class="card-body">
+                    <h5 class="card-title">{{bainghe.tenBaiTap}}</h5>
+                    <p class="card-text">{{bainghe.moTa}}</p>
+                    <a [routerLink]="['/listening/level/lesson', bainghe.maBaiTap]" class="btn btn-primary">Practice Lesson</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div *ngIf = "mvr"> 
+    <h1>Mover</h1>
+    <div class="view-header">
+        <p>Are you a beginner (CEFR level A1) learner of English? This section offers listening practice
+            to help you understand familiar words and basic phrases when people speak slowly and clearly.
+            Situations include meeting people, shopping and conversations at work.</p>
+
+        <p>Each lesson has a preparation task, an audio recording and two tasks to check your understanding
+            and to practise a variety of listening skills. Make a start today.
+        </p>
+    </div>
+    <h2>Choose a listening lesson</h2>
+    <div class="view-content" *ngIf = "dsbaiNghe">
+        <div class="row" *ngFor="let bainghe of dsbaiNghe.data">
+            <div class="card col-3" class="cardgroup" style=" margin-right: auto;">
+                <img [src]="chuoi" class="card-img-top">
+                <div class="card-body">
+                    <h5 class="card-title">{{bainghe.tenBaiTap}}</h5>
+                    <p class="card-text">{{bainghe.moTa}}</p>
+                    <a [routerLink]="['/listening/level/lesson', bainghe.maBaiTap]" class="btn btn-primary">Practice Lesson</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div *ngIf = "str"> 
+    <h1>Starter</h1>
+    <div class="view-header">
+        <p>Are you a beginner (CEFR level A1) learner of English? This section offers listening practice
+            to help you understand familiar words and basic phrases when people speak slowly and clearly.
+            Situations include meeting people, shopping and conversations at work.</p>
+
+        <p>Each lesson has a preparation task, an audio recording and two tasks to check your understanding
+            and to practise a variety of listening skills. Make a start today.
+        </p>
+    </div>
+    <h2>Choose a listening lesson</h2>
+    <div class="view-content" *ngIf = "dsbaiNghe">
+        <div class="row" *ngFor="let bainghe of dsbaiNghe.data">
+            <div class="card col-3" class="cardgroup" style=" margin-right: auto;">
+                <img [src]="chuoi" class="card-img-top">
+                <div class="card-body">
+                    <h5 class="card-title">{{bainghe.tenBaiTap}}</h5>
+                    <p class="card-text">{{bainghe.moTa}}</p>
+                    <a [routerLink]="['/listening/level/lesson', bainghe.maBaiTap]" class="btn btn-primary">Practice Lesson</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div *ngIf = "tec"> 
+    <h1>TOEIC</h1>
+    <div class="view-header">
+        <p>Are you a beginner (CEFR level A1) learner of English? This section offers listening practice
+            to help you understand familiar words and basic phrases when people speak slowly and clearly.
+            Situations include meeting people, shopping and conversations at work.</p>
+
+        <p>Each lesson has a preparation task, an audio recording and two tasks to check your understanding
+            and to practise a variety of listening skills. Make a start today.
+        </p>
+    </div>
+    <h2>Choose a listening lesson</h2>
+    <div class="view-content" *ngIf = "dsbaiNghe">
+        <div class="row" *ngFor="let bainghe of dsbaiNghe.data">
+            <div class="card col-3" class="cardgroup" style=" margin-right: auto;">
+                <img [src]="chuoi" class="card-img-top">
+                <div class="card-body">
+                    <h5 class="card-title">{{bainghe.tenBaiTap}}</h5>
+                    <p class="card-text">{{bainghe.moTa}}</p>
+                    <a [routerLink]="['/listening/level/lesson', bainghe.maBaiTap]" class="btn btn-primary">Practice Lesson</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

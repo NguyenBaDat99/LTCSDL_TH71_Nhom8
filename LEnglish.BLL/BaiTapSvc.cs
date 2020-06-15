@@ -103,5 +103,10 @@ namespace LEnglish.BLL
             };
             return res;
         }
+
+        public List<object> proc_layDanhSachBaiHoc(string keyword)
+        {
+            return _rep.proc_layDanhSachBaiHoc(keyword);
+        }
     }
 }

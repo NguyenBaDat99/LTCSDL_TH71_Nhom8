@@ -1,0 +1,30 @@
+
+.cardgroup {
+    display: flex;
+}
+.card-img-top {
+    object-fit: cover;
+    width: 20%;
+    border-radius: 5px;
+}
+*, ::after, ::before {
+    box-sizing: border-box;
+    margin-top: 5px;
+    margin-bottom: 2px;
+}
+
+p {
+    display: block;
+    margin-block-start: 1em;
+    margin-block-end: 1em;
+    margin-inline-start: 0px;
+    margin-inline-end: 0px;
+}
+
+.card-body {
+    padding-top: 0rem;
+}
+.card-text {
+    margin-top: 4px;
+    margin-bottom: 2px;
+}

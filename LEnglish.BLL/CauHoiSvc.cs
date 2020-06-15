@@ -101,5 +101,10 @@ namespace LEnglish.BLL
             };
             return res;
         }
+
+        public List<object> pro_layDanhSachCauHoi(string keyword)
+        {
+            return _rep.pro_layDanhSachCauHoi(keyword);
+        }
     }
 }

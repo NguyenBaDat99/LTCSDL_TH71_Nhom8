@@ -68,5 +68,13 @@ namespace LEnglish.Web.Controllers
             var res = _svc.RemoveBaiTap(req.Keyword);
             return Ok(res);
         }
+
+        [HttpPost("proc_layDanhSachBaiHoc")]
+        public IActionResult proc_layDanhSachBaiHoc([FromBody]SimpleReq keyword)
+        {
+            var res = new SingleRsp();
+            res.Data = _svc.proc_layDanhSachBaiHoc(keyword.Keyword);
+            return Ok(res);
+        }
     }
 }

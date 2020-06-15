@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { CookieService } from 'ngx-cookie-service';
 
 @Component({  
   selector: 'app-reading',
@@ -6,11 +7,10 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./reading.component.css']
 })
 export class ReadingComponent implements OnInit {
-  
-  constructor() { }
+
+  constructor(private cookieService: CookieService) {}
 
   ngOnInit() {
   }
-
 }
 

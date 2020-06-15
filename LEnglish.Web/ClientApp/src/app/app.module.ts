@@ -18,6 +18,12 @@ import { AdminDanhmucComponent } from './admin-danhmuc/admin-danhmuc.component';
 import { AdminCauhoiComponent } from './admin-cauhoi/admin-cauhoi.component';
 import { AdminComponent } from './admin/admin.component';
 import { FrameTranslateComponent } from './frame-translate/frame-translate.component';
+import { ListeningLevelComponent } from './listening-level/listening-level.component';
+import { ListeningLessonComponent } from './listening-lesson/listening-lesson.component';
+import { ListeningContentComponent } from './listening-content/listening-content.component';
+import { ReadingLevelComponent } from './reading-level/reading-level.component';
+import { ReadingLessonComponent } from './reading-lesson/reading-lesson.component';
+import { ReadingContentComponent } from './reading-content/reading-content.component';
 
 @NgModule({
   declarations: [
@@ -33,7 +39,13 @@ import { FrameTranslateComponent } from './frame-translate/frame-translate.compo
     AdminDanhmucComponent,
     AdminCauhoiComponent,
     AdminComponent,
-    FrameTranslateComponent
+    FrameTranslateComponent,
+    ListeningLevelComponent,
+    ListeningLessonComponent,
+    ListeningContentComponent,
+    ReadingLevelComponent,
+    ReadingLessonComponent,
+    ReadingContentComponent
   ],
   imports: [
     BrowserModule.withServerTransition({ appId: 'ng-cli-universal' }),
@@ -63,8 +75,44 @@ import { FrameTranslateComponent } from './frame-translate/frame-translate.compo
           }
         ]
       },
-      { path: 'listening', component: ListeningComponent },
-      { path: 'reading', component: ReadingComponent },
+      { 
+        path: 'listening', 
+        component: ListeningComponent,
+        children : [ 
+          {
+            path : '',
+            component : ListeningLevelComponent,
+              
+          },
+          {
+            path : 'level/:id',
+            component : ListeningLessonComponent
+          },
+          {
+            path : 'level/lesson/:id',
+            component : ListeningContentComponent
+          }
+        ]
+       },
+      { 
+        path: 'reading', 
+        component: ReadingComponent,
+        children : [ 
+          {
+            path : '',
+            component : ReadingLevelComponent,
+              
+          },
+          {
+            path : 'level/:id',
+            component : ReadingLessonComponent
+          },
+          {
+            path : 'level/lesson/:id',
+            component : ReadingContentComponent
+          }
+        ]
+       },
       { path: 'writting', component: WrittingComponent },
       { path: 'user', component: UserComponent },
     ])

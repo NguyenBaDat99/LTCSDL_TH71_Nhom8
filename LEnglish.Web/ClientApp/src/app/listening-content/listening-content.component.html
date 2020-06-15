@@ -1,0 +1,90 @@
+<div>
+    <h1>{{bainghe.tenBaiTap}}</h1>
+
+    <div class="row">
+        <div class="col-6"  style=" margin-right: auto;">
+            <div class="card-body">
+                <p>Listen to some requests from a manager to practise
+                    and improve your listening skills.</p>
+                <img src="./assets/Images/listen2.jpg" class="card-img-top" alt="...">
+                <h5 class="card-title">ABC</h5>
+                <audio controls src="{{bainghe.ghiChu}}" type="audio/mpeg"></audio>
+            </div>
+        </div>
+
+        <div class="col-3" style=" margin-right: auto;">
+            <div class="card-body">
+                <h3 class="card-title">Bảng Câu Hỏi</h3>
+                <div class="view-content" *ngIf = "dsCauHoi">
+                    <div class="row" *ngFor="let cauhoi of dsCauHoi.data">
+                        <div class="card col-3" class="cardgroup" style=" margin-right: auto;">
+                            <h6>{{cauhoi.noiDungCauHoi}}</h6>
+                            <input/>
+                            <div class="card-body">
+                                <p class="card-text"></p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+<!-- Mover -->
+<!-- <div *ngIf = "mvr" >
+    <h1>{{bainghe.tenBaiTap}}</h1>
+    <div class="view-header">
+        <p>jaksdgjkasdkjsajd</p>
+        <img src="./assets/Images/listen2.jpg" class="card-img-top" alt="...">
+    </div>
+
+    <div class="row">
+      <div class="card col-3" class="cardgroup" style=" margin-right: auto;">
+          <div class="card-body">
+              <h5 class="card-title">ABC</h5>
+              <audio controls src="{{bainghe.ghiChu}}" type="audio/mpeg"></audio> 
+          </div>
+      </div>
+  </div>
+</div> -->
+
+
+<!-- Start -->
+<!-- <div *ngIf = "str" >
+    <h1>{{bainghe.tenBaiTap}}</h1>
+    <div class="view-header">
+        <p>Start</p>
+        <img src="./assets/Images/listen2.jpg" class="card-img-top" alt="...">
+    </div>
+
+    <div class="row">
+      <div class="card col-3" class="cardgroup" style=" margin-right: auto;">
+          <div class="card-body">
+              <h5 class="card-title">ABC</h5>
+              <audio controls src="{{bainghe.ghiChu}}" type="audio/mpeg"></audio> 
+          </div>
+      </div>
+  </div>
+</div> -->
+
+
+<!-- tec -->
+<!-- <div *ngIf = "tec" >
+    <h1>{{bainghe.tenBaiTap}}</h1>
+    <div class="view-header">
+        <p>TEC</p>
+        <img src="./assets/Images/listen2.jpg" class="card-img-top" alt="...">
+    </div>
+
+    <div class="row">
+      <div class="card col-3" class="cardgroup" style=" margin-right: auto;">
+          <div class="card-body">
+              <h5 class="card-title">ABC</h5>
+              <audio controls src="{{bainghe.ghiChu}}" type="audio/mpeg"></audio> 
+          </div>
+      </div>
+  </div>
+</div> -->
