@@ -88,7 +88,7 @@ namespace LEnglish.BLL
 
         public object SearchBangDiem(string keyword, int page, int size)
         {
-            var bd = All;
+            var bd = All.Where(x => x.TenDangNhap.Contains(keyword));
 
             var offset = (page - 1) * size;
             var total = bd.Count();
@@ -103,6 +103,12 @@ namespace LEnglish.BLL
                 Page = page,
                 Size = size
             };
+            return res;
+        }
+
+        public object SearchBangDiemCaNhan(string keyword)
+        {
+            var res = All.Where(x => x.TenDangNhap.Contains(keyword));
             return res;
         }
     }

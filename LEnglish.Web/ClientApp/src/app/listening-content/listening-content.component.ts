@@ -158,11 +158,11 @@ export class ListeningContentComponent implements OnInit {
       }
     });
 
-    var diem = 10 * (tongCauDung / tongCauHoi);
+    var diem = (10 * (tongCauDung / tongCauHoi)).toFixed(2);
 
     this.bangdiem.soCauHoi = tongCauHoi;
     this.bangdiem.soCauDung = tongCauDung;
-    this.bangdiem.diem = diem;
+    this.bangdiem.diem = parseFloat(diem);
     this.bangdiem.tinhTrang = "Finished";
 
     console.log(this.bangdiem);

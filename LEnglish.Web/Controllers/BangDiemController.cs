@@ -68,5 +68,14 @@ namespace LEnglish.Web.Controllers
             var res = _svc.RemoveBangDiem(req.Id);
             return Ok(res);
         }
+
+        [HttpPost("search-bangDiemCaNhan")]
+        public IActionResult SearchBangDiem([FromBody]SimpleReq req)
+        {
+            var res = new SingleRsp();
+            var nguoidung = _svc.SearchBangDiemCaNhan(req.Keyword);
+            res.Data = nguoidung;
+            return Ok(res);
+        }
     }
 }

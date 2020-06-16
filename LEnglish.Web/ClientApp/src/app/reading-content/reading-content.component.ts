@@ -12,9 +12,9 @@ import * as $ from 'jquery';
   styleUrls: ['./reading-content.component.css']
 })
 export class ReadingContentComponent implements OnInit {
-  
-  isDone : boolean = false;
-  isShowAnswer:boolean = false;
+
+  isDone: boolean = false;
+  isShowAnswer: boolean = false;
 
   dsbaiDoc: any = {
     data: []
@@ -70,7 +70,7 @@ export class ReadingContentComponent implements OnInit {
   initBangDiem() {
     if (this.cookieService.get('isLogged')) {
       this.bangdiem.tenDangNhap = this.cookieService.get('tenDangNhap');
-      this.bangdiem.maBaiTap =  this.route.snapshot.params['id'];
+      this.bangdiem.maBaiTap = this.route.snapshot.params['id'];
 
       for (let index = 0; index < this.dsBangDiem.data.length; index++) {
         if (this.bangdiem.tenDangNhap == this.dsBangDiem.data[index].tenDangNhap && this.bangdiem.maBaiTap == this.dsBangDiem.data[index].maBaiTap) {
@@ -86,7 +86,7 @@ export class ReadingContentComponent implements OnInit {
 
       this.http.post('https://localhost:44318/' + 'api/BangDiem/create-bangDiem', this.bangdiem).subscribe(result => {
         var res: any = result;
-      }, error => console.error(error));   
+      }, error => console.error(error));
     }
   }
 
@@ -140,10 +140,10 @@ export class ReadingContentComponent implements OnInit {
     this.isShowAnswer = false;
   }
 
-  showanswer(){
-    if(this.isShowAnswer){
+  showanswer() {
+    if (this.isShowAnswer) {
       this.isShowAnswer = false;
-    }else{
+    } else {
       this.isShowAnswer = true;
     }
   }
@@ -163,16 +163,16 @@ export class ReadingContentComponent implements OnInit {
       }
     });
 
-    var diem = 10 * (tongCauDung / tongCauHoi);
+    var diem = (10 * (tongCauDung / tongCauHoi)).toFixed(2);;
 
     this.bangdiem.soCauHoi = tongCauHoi;
     this.bangdiem.soCauDung = tongCauDung;
-    this.bangdiem.diem = diem;
+    this.bangdiem.diem = parseFloat(diem);
     this.bangdiem.tinhTrang = "Finished";
 
     console.log(this.bangdiem);
 
-    if(this.cookieService.get('isLogged')){
+    if (this.cookieService.get('isLogged')) {
       this.http.post('https://localhost:44318/' + 'api/BangDiem/update-bangDiem', this.bangdiem).subscribe(result => {
         var res: any = result;
       }, error => console.error(error));

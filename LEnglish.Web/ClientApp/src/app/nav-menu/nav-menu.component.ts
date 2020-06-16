@@ -47,6 +47,10 @@ export class NavMenuComponent implements OnInit {
     email: "",
   }
 
+  bangDiemCaNhan: any = {
+    data:[]
+  }
+
   isAdmin: boolean = false;
   isLoged: boolean = false;
   errorMessage: string = "";
@@ -192,6 +196,17 @@ export class NavMenuComponent implements OnInit {
   openModalChangePass() {
     this.errorMessage = "";
     $('#modalChangePass').modal('show');
+  }
+  openModalBangDiem(){
+    var para: any = {
+      id: 0,
+      keyword: this.nguoidung.tenDangNhap
+    }
+    this.http.post('https://localhost:44318/api/BangDiem/search-bangDiemCaNhan', para).subscribe(result => {
+      var res: any = result;
+      this.bangDiemCaNhan.data = res.data;
+    }, error => console.error(error));
+    $('#modalBangDiem').modal('show');
   }
 
   changeInfo() {
