@@ -1,13 +1,4 @@
 <div class="container" *ngIf="!isAdmin">
-  <!-- <h1 class = "item col">
-    Home
-  </h1>
-  <h1 class = "item col">
-    Counter
-  </h1>
-  <h1 class = "item col">
-    Fetch data
-  </h1> -->
   <div class="row">
     <div class="col-8" style="padding: 0px;">
       <div id="carouselExampleCaptions" class="carousel slide" data-ride="carousel">
@@ -20,22 +11,27 @@
           <div class="carousel-item active">
             <img src="./assets/Images/pic1.jpg" class="d-block w-100" alt="...">
             <div class="carousel-caption d-none d-md-block">
-              <h5>First slide label</h5>
-              <p>Nulla vitae elit libero, a pharetra augue mollis interdum.</p>
+              <h5>Translate</h5>
+              <p>Here you can find the meaning of the word you are looking for. Translate will help you to
+                improve your understanding of the language and your pronunciation.</p>
             </div>
           </div>
           <div class="carousel-item">
             <img src="./assets/Images/pic2.jpg" class="d-block w-100" alt="...">
             <div class="carousel-caption d-none d-md-block">
-              <h5>Second slide label</h5>
-              <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+              <h5>Listening</h5>
+              <p>Here you can find activities to practise your listening skills. Listening will help you to improve your
+                understanding of the language and your pronunciation.</p>
             </div>
           </div>
           <div class="carousel-item">
+
+
             <img src="./assets/Images/pic3.jpg" class="d-block w-100" alt="...">
             <div class="carousel-caption d-none d-md-block">
-              <h5>Third slide label</h5>
-              <p>Praesent commodo cursus magna, vel scelerisque nisl consectetur.</p>
+              <h5>Reading</h5>
+              <p>Here you can find activities to practise your reading skills. Reading will help you to improve your
+                understanding of the language and build your vocabulary.</p>
             </div>
           </div>
         </div>
@@ -59,31 +55,22 @@
   <br>
 
   <div class="row">
-    <div class="card col-3" style=" margin-right:auto;">
-      <img src="./assets/Images/reading.png" class="card-img-top" alt="...">
+    <div class="card col-5" style=" margin-right:auto;">
+      <img src="./assets/Images/reading.jpg" class="card-img-top" alt="...">
       <div class="card-body">
         <h5 class="card-title">Reading</h5>
-        <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's
-          content.</p>
+        <p class="card-text">Here you can find activities to practise your reading skills. Reading will help you to
+          improve your understanding of the language and build your vocabulary.</p>
         <a href="/reading" class="btn btn-primary">Practise Reading</a>
       </div>
     </div>
-    <div class="card col-3" style=" margin-right:auto ;">
+    <div class="card col-5" style=" margin-right:0px ;">
       <img src="./assets/Images/listening.jpg" class="card-img-top" alt="...">
       <div class="card-body">
         <h5 class="card-title">Listening</h5>
-        <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's
-          content.</p>
+        <p class="card-text">Here you can find activities to practise your listening skills. Listening will help you to
+          improve your understanding of the language and your pronunciation.</p>
         <a href="/listening" class="btn btn-primary">Practise Listening</a>
-      </div>
-    </div>
-    <div class="card col-3">
-      <img src="./assets/Images/writing.jpg" class="card-img-top" alt="...">
-      <div class="card-body">
-        <h5 class="card-title">Writing</h5>
-        <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's
-          content.</p>
-        <a href="/writting" class="btn btn-primary">Practise Writing</a>
       </div>
     </div>
   </div>
@@ -92,4 +79,3 @@
 <div *ngIf="isAdmin">
   <app-admin></app-admin>
 </div>
-

@@ -8,3 +8,11 @@ audio {
 .col-6 {
     padding-left: 0px;
 }
+.card-body {
+    padding-left: 0;
+    padding-bottom: 0px;
+}
+
+h3 {
+    margin-left: -15px;
+}

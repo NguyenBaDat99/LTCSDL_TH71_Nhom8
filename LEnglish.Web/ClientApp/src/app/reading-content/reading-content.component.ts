@@ -12,6 +12,9 @@ import * as $ from 'jquery';
   styleUrls: ['./reading-content.component.css']
 })
 export class ReadingContentComponent implements OnInit {
+  
+  isDone : boolean = false;
+  isShowAnswer:boolean = false;
 
   dsbaiDoc: any = {
     data: []
@@ -98,9 +101,9 @@ export class ReadingContentComponent implements OnInit {
 
   }
 
-  resetForm(form: NgForm) {
-    this.ngOnInit();
-  }
+  // resetForm(form: NgForm) {
+  //   this.ngOnInit();
+  // }
 
   layDanhSachBaiDoc(key) {
     let x = {
@@ -130,14 +133,32 @@ export class ReadingContentComponent implements OnInit {
     })
   }
 
+  tryagain() {
+    // location.reload();
+    this.ngOnInit();
+    this.isDone = false;
+    this.isShowAnswer = false;
+  }
+
+  showanswer(){
+    if(this.isShowAnswer){
+      this.isShowAnswer = false;
+    }else{
+      this.isShowAnswer = true;
+    }
+  }
+
   submit() {
+
+    this.isDone = true;
+
     var tongCauHoi = 0;
     var tongCauDung = 0;
 
     this.dsCauHoi.data.forEach(cauhoi => {
       tongCauHoi++;
 
-      if (cauhoi.maCauHoi == cauhoi.dapAn) {
+      if (cauhoi.dapAn.includes(cauhoi.maCauHoi)) {
         tongCauDung++;
       }
     });

@@ -10,8 +10,6 @@ import { NavMenuComponent } from './nav-menu/nav-menu.component';
 import { HomeComponent } from './home/home.component';
 import { ListeningComponent } from './listening/listening.component';
 import { ReadingComponent } from './reading/reading.component';
-import { WrittingComponent } from './writting/writting.component';
-import { UserComponent } from './user/user.component';
 import { AdminBaitapComponent } from './admin-baitap/admin-baitap.component';
 import { AdminCapbacComponent } from './admin-capbac/admin-capbac.component';
 import { AdminDanhmucComponent } from './admin-danhmuc/admin-danhmuc.component';
@@ -32,8 +30,6 @@ import { ReadingContentComponent } from './reading-content/reading-content.compo
     HomeComponent,
     ListeningComponent,
     ReadingComponent,
-    WrittingComponent,
-    UserComponent,
     AdminBaitapComponent,
     AdminCapbacComponent,
     AdminDanhmucComponent,
@@ -113,8 +109,6 @@ import { ReadingContentComponent } from './reading-content/reading-content.compo
           }
         ]
        },
-      { path: 'writting', component: WrittingComponent },
-      { path: 'user', component: UserComponent },
     ])
   ],
   providers: [CookieService],

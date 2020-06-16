@@ -4,87 +4,119 @@
     <div class="row">
         <div class="col-6"  style=" margin-right: auto;">
             <div class="card-body">
-                <p>Listen to some requests from a manager to practise
-                    and improve your listening skills.</p>
+                <p>{{bainghe.moTa}}</p>
                 <img src="./assets/Images/listen2.jpg" class="card-img-top" alt="...">
-                <h5 class="card-title">ABC</h5>
+                <h5 class="card-title">Audio</h5>
                 <audio controls src="{{bainghe.ghiChu}}" type="audio/mpeg"></audio>
             </div>
         </div>
 
-        <div class="col-3" style=" margin-right: auto;">
-            <div class="card-body">
-                <h3 class="card-title">Bảng Câu Hỏi</h3>
-                <div class="view-content" *ngIf = "dsCauHoi">
-                    <div class="row" *ngFor="let cauhoi of dsCauHoi.data">
-                        <div class="card col-3" class="cardgroup" style=" margin-right: auto;">
-                            <h6>{{cauhoi.noiDungCauHoi}}</h6>
-                            <input/>
-                            <div class="card-body">
-                                <p class="card-text"></p>
+        <div class="col-4" style=" margin-right: auto;">
+
+            <form #cautraloiForm="ngForm" (ngSubmit)="saveCauTL(cautraloiForm)">
+                <div class="card-body">
+                    <h3 class="card-title">Bảng Câu Hỏi</h3>
+                    <div class="view-content" *ngIf="dsCauHoi">
+                        <div class="row" *ngFor="let cauhoi of dsCauHoi.data">
+                            <div class="card col-3" class="cardgroup" style=" margin-right: auto;">
+                                <h6>{{cauhoi.noiDungCauHoi}}</h6>
+
+                                <div class="col-sm-10" *ngFor="let cautraloi of cauhoi.cauTraLoi.split('/')">
+                                    <div class="form-check" *ngIf="cautraloi != cauhoi.dapAn; else elseBlock">
+                                        <label class="form-check-label">
+                                            <input class="form-check-input" type="radio" name="{{cauhoi.maCauHoi}}" [value]="cautraloi" [(ngModel)]="cauhoi.maCauHoi">
+                                            {{cautraloi}}                                            
+                                        </label>
+                                    </div>
+                                    <ng-template #elseBlock>
+                                        <div class="form-check">
+                                            <label class="form-check-label" *ngIf="!isShowAnswer">
+                                                <input class="form-check-input" type="radio" name="{{cauhoi.maCauHoi}}" [value]="cautraloi" [(ngModel)]="cauhoi.maCauHoi">
+                                                {{cautraloi}}                                            
+                                            </label>
+                                            <label class="form-check-label" style="background-color: greenyellow;" *ngIf="isShowAnswer">
+                                                <input class="form-check-input" type="radio" name="{{cauhoi.maCauHoi}}" [value]="cautraloi" [(ngModel)]="cauhoi.maCauHoi">
+                                                {{cautraloi}}                                            
+                                            </label>
+                                        </div>                                    
+                                    </ng-template>
+                                </div>
+
+                                <div class="card-body">
+                                    <p class="card-text"></p>
+                                </div>
                             </div>
                         </div>
                     </div>
+                    <button class="btn btn-primary" type="submit" data-toggle="modal"
+                        data-target="#modalConfirm" *ngIf="!isDone">Finish</button>
+                                        
+                    <button class="btn btn-primary" type="submit" *ngIf="isDone" (click)="tryagain()">Try again</button>
+                    &nbsp;
+                    <button class="btn btn-success" type="submit" *ngIf="isDone" (click)="showanswer()" >Show answer</button>
+                    <br>
                 </div>
+            </form>
+
+        </div>
+    </div>
+</div>
+
+<!-- Modal Confirm-->
+<div class="modal fade" id="modalConfirm" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+    aria-hidden="true">
+    <div class="modal-dialog" style="width:350px">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Confirmation</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <form>
+                    <div class="form-group">
+                        <p>Do you want finish?</p>
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-danger" data-dismiss="modal">Cancel</button>
+                &nbsp;
+                <button type="submit" class="btn btn-success right" data-dismiss="modal" (click)="submit()">OK</button>
             </div>
         </div>
     </div>
 </div>
 
-
-
-<!-- Mover -->
-<!-- <div *ngIf = "mvr" >
-    <h1>{{bainghe.tenBaiTap}}</h1>
-    <div class="view-header">
-        <p>jaksdgjkasdkjsajd</p>
-        <img src="./assets/Images/listen2.jpg" class="card-img-top" alt="...">
+<!-- Modal Feedback-->
+<div class="modal fade" id="modalFeedback" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+    aria-hidden="true">
+    <div class="modal-dialog" style="width:350px">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Feedback</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <form>
+                    <div class="form-group">
+                        <strong>Bài tập: </strong> {{bainghe.tenBaiTap}}
+                        <br>
+                        <strong>Tổng số câu hỏi: </strong>{{bangdiem.soCauHoi}}
+                        <br>
+                        <strong>Tổng số câu đúng: </strong>{{bangdiem.soCauDung}}
+                        <br>
+                        <strong>Điểm: </strong>{{bangdiem.diem}}
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-success" data-dismiss="modal">OK</button>
+                &nbsp;
+            </div>
+        </div>
     </div>
-
-    <div class="row">
-      <div class="card col-3" class="cardgroup" style=" margin-right: auto;">
-          <div class="card-body">
-              <h5 class="card-title">ABC</h5>
-              <audio controls src="{{bainghe.ghiChu}}" type="audio/mpeg"></audio> 
-          </div>
-      </div>
-  </div>
-</div> -->
-
-
-<!-- Start -->
-<!-- <div *ngIf = "str" >
-    <h1>{{bainghe.tenBaiTap}}</h1>
-    <div class="view-header">
-        <p>Start</p>
-        <img src="./assets/Images/listen2.jpg" class="card-img-top" alt="...">
-    </div>
-
-    <div class="row">
-      <div class="card col-3" class="cardgroup" style=" margin-right: auto;">
-          <div class="card-body">
-              <h5 class="card-title">ABC</h5>
-              <audio controls src="{{bainghe.ghiChu}}" type="audio/mpeg"></audio> 
-          </div>
-      </div>
-  </div>
-</div> -->
-
-
-<!-- tec -->
-<!-- <div *ngIf = "tec" >
-    <h1>{{bainghe.tenBaiTap}}</h1>
-    <div class="view-header">
-        <p>TEC</p>
-        <img src="./assets/Images/listen2.jpg" class="card-img-top" alt="...">
-    </div>
-
-    <div class="row">
-      <div class="card col-3" class="cardgroup" style=" margin-right: auto;">
-          <div class="card-body">
-              <h5 class="card-title">ABC</h5>
-              <audio controls src="{{bainghe.ghiChu}}" type="audio/mpeg"></audio> 
-          </div>
-      </div>
-  </div>
-</div> -->
+</div>

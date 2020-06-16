@@ -13,13 +13,10 @@
             <a class="nav-link text-light" [routerLink]="['/']">Trang chủ</a>
           </li>
           <li *ngIf="!isAdmin" class="nav-item" [routerLinkActive]="['link-active']">
-            <a class="nav-link text-light" [routerLink]="['/listening']">Listening</a>
+            <a class="nav-link text-light" [routerLink]="['/listening']">Luyện nghe</a>
           </li>
           <li *ngIf="!isAdmin" class="nav-item" [routerLinkActive]="['link-active']">
-            <a class="nav-link text-light" [routerLink]="['/reading']">Reading</a>
-          </li>
-          <li *ngIf="!isAdmin" class="nav-item" [routerLinkActive]="['link-active']">
-            <a class="nav-link text-light" [routerLink]="['/writting']">Writting</a>
+            <a class="nav-link text-light" [routerLink]="['/reading']">Luyện đọc</a>
           </li>
           <li>
             <div *ngIf="!isLoged">
