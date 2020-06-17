@@ -45,10 +45,14 @@
   - Tạo tài khoản bằng cách click vào nút đăng nhập góc phải trên, click nút đăng kí và điền các thông tin cần thiết để tạo tài khoản
  ### Sử dụng phía quản trị viên: 
  #### Tài khoản quản trị viên (tài khoản gốc của website): Tên đăng nhập: admin / Mật khẩu: admin
-  - Tại bảng cấp bậc: admin có thể thêm, sửa, xóa cấp bậc
-  - 
+  - Tại bảng cấp bậc: admin có thể thêm, sửa, xóa cấp bậc. Tìm kiếm cấp bậc theo tên hoặc mã
+  - Tại bảng danh mục: admin có thể thêm, sửa, xóa danh mục. Tìm kiếm danh mục theo tên hoặc mã
+  - Tại bảng bài tập: admin có thể thêm, sửa, xóa bài tập. Tìm kiếm bài tập theo tên hoặc mã. Nhấn nút Hiện nội dung để xem đầy đủ nội dung của bài tập đó
+  - Tại bảng câu hỏi: admin có thể thêm, sửa, xóa bài tập. Tìm kiếm câu hỏi theo mã. Nhấn nút Hiện/Ẩn nội dung để bảng hiện đầy đủ thông tin câu hỏi
  ### Phía người dùng: 
  #### Tài khoản mẫu người dùng: Tên đăng nhập: xhung/ Mật khẩu: 123
-  -
-  - 
+  - Người dùng có thể tra cứu từ frame dịch tại trang chủ hoặc bấm nút dịch góc phải dưới
+  - Vào các mục luyện nghe luyện đọc chọn bài tập và làm bài
+  - Chỉnh sửa thông tin và đổi mật khẩu bằng nút tùy chỉnh
+  - Xem thông tin bảng điểm các bài tập đã làm và chưa làm xong
  
