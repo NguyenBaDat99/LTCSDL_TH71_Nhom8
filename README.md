@@ -28,9 +28,9 @@
  #### Người dùng: 
   - Giao diện trang chủ: Nhật Minh, Bá Đạt   
   - Giao diện trang luyện nghe, luyện đọc: Gồm 3 trang  
-   ~ Level (Các cấp bậc): Quí Đông  
-   ~ Lesson (Các bài tập của cấp bậc đó): Quí Đông
-   ~ Content (Phần làm bài tập): Quí Đông, Bá Đạt 
+   - Level (Các cấp bậc): Quí Đông  
+   - Lesson (Các bài tập của cấp bậc đó): Quí Đông
+   - Content (Phần làm bài tập): Quí Đông, Bá Đạt 
   - Giao diện đăng nhập, đăng kí: Nhật Minh, Bá Đạt
   - Giao diện chỉnh sửa thông tin, đổi mật khẩu người dùng: Bá Đạt
   - Giao diện bảng điểm cá nhân của người dùng: Bá Đạt
