@@ -24,7 +24,7 @@
  - Xử lý đăng nhập, đăng kí (Có mã hóa mật khẩu): 
  - Xử lý chỉnh sửa thông tin, đổi mật khẩu người dùng: 
 ### Front-end:
- * Người dùng: 
+ #### Người dùng: 
   - Giao diện trang chủ:   
   - Giao diện trang luyện nghe, luyện đọc: Gồm 3 trang  
    ~ Level (Các cấp bậc):   
@@ -34,7 +34,7 @@
   - Giao diện chỉnh sửa thông tin, đổi mật khẩu người dùng  
   - Giao diện bảng điểm cá nhân của người dùng:  
   - Giao diện frame Dịch từ (Lấy Plugin Frame Tra Từ của dict.laban.vn):   
- * Quản trị viên: 
+ #### Quản trị viên: 
   - Giao diện thêm, sửa, xóa, tìm các bảng(CapBac, DanhMuc, BaiTap, CauHoi):
 ## Hướng dẫn sử dụng:
  - Tài khoản quản trị viên (tài khoản gốc của website): Tên đăng nhập: admin / Mật khẩu: admin
