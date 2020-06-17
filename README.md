@@ -37,11 +37,13 @@
  #### Quản trị viên: 
   - Giao diện thêm, sửa, xóa, tìm các bảng(CapBac, DanhMuc, BaiTap, CauHoi):
 ## Hướng dẫn sử dụng:
- - Tài khoản quản trị viên (tài khoản gốc của website): Tên đăng nhập: admin / Mật khẩu: admin
- - Tài khoản người dùng: Tên đăng nhập: xhung/ Mật khẩu: 123
- 
-  Phía quản trị viên:
-   - 
-  Phía người dùng:
-   - 
+ ### Cài đặt:
+  - 
+  - 
+ ### Phía quản trị viên: Tài khoản quản trị viên (tài khoản gốc của website): Tên đăng nhập: admin / Mật khẩu: admin
+  -
+  -
+ ### Phía người dùng: Tài khoản người dùng: Tên đăng nhập: xhung/ Mật khẩu: 123
+  -
+  - 
  
