@@ -1,9 +1,9 @@
 # LEnglish
 
 ## Mô tả project: 
-### Xây dựng cở sở dữ liệu và website phục vụ cho việc học tiếng anh gồm kỹ năng nghe và đọc. Người dùng có thể vào web tạo tài khoản để làm bài tập và theo dõi bảng điểm cá nhân của mình. Quản trị viên có thể vào web để thêm các cấp bậc, danh mục, bài tập, câu hỏi cho website của mình.
-### Back-end: SQL Server Database, ADO.NET
-### Front-end: Angular framework
+  - Xây dựng cở sở dữ liệu và website phục vụ cho việc học tiếng anh gồm kỹ năng nghe và đọc. Người dùng có thể vào web tạo tài khoản để làm bài tập và theo dõi bảng điểm cá nhân của mình. Quản trị viên có thể vào web để thêm các cấp bậc, danh mục, bài tập, câu hỏi cho website của mình.
+  - Back-end: SQL Server Database, ADO.NET
+  - Front-end: Angular framework
 
 ## Danh sách thành viên:
 + 1751010022 - Nguyễn Bá Đạt
