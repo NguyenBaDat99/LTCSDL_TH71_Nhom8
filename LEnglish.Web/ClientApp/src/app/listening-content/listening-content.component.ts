@@ -4,6 +4,7 @@ import { ActivatedRoute } from '@angular/router';
 import { CookieService } from 'ngx-cookie-service';
 import { NgForm } from '@angular/forms';
 import * as $ from 'jquery';
+import { isNull } from 'util';
 
 @Component({
   selector: 'app-listening-content',
@@ -153,7 +154,13 @@ export class ListeningContentComponent implements OnInit {
     this.dsCauHoi.data.forEach(cauhoi => {
       tongCauHoi++;
 
-      if (cauhoi.dapAn.includes(cauhoi.maCauHoi)) {
+      var da = cauhoi.dapAn;
+      var tl = cauhoi.ghiChu;
+      if(cauhoi.ghiChu != null){
+        tl = cauhoi.ghiChu.toLowerCase();
+      }        
+
+      if (da.toLowerCase().includes(tl)) {
         tongCauDung++;
       }
     });
