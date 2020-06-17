@@ -4,7 +4,7 @@
 + Back-end: SQL Server Database, ADO.NET
 + Front-end: Angular framework
 
- Phía quản trị viên:
+##Danh sách thành viên:
 + 1751010022 - Nguyễn Bá Đạt
 + 1751010026 - Đoàn Quí Đông
 + 1751010054 - Nguyễn Xuân Hưng
