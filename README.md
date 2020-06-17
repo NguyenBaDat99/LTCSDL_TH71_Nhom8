@@ -25,19 +25,35 @@ Phân công công việc:
  . Xử lý chỉnh sửa thông tin, đổi mật khẩu người dùng: 
 + Front-end:
  * Người dùng:
+ 
   . Giao diện trang chủ: 
+  
   . Giao diện trang luyện nghe, luyện đọc: Gồm 3 trang
+  
    ~ Level (Các cấp bậc):
+   
    ~ Lesson (Các bài tập của cấp bậc đó): 
+   
    ~ Content (Phần làm bài tập):  
+   
   . Giao diện đăng nhập, đăng kí:
+  
   . Giao diện chỉnh sửa thông tin, đổi mật khẩu người dùng
+  
   . Giao diện bảng điểm cá nhân của người dùng:
+  
   . Giao diện frame Dịch từ (Lấy Plugin Frame Tra Từ của dict.laban.vn): 
+  
  * Quản trị viên:
+ 
   . Giao diện thêm, sửa, xóa, tìm các bảng(CapBac, DanhMuc, BaiTap, CauHoi):
 
 Hướng dẫn sử dụng:
  - Tài khoản quản trị viên (tài khoản gốc của website): Tên đăng nhập: admin / Mật khẩu: admin
  - Tài khoản người dùng: Tên đăng nhập: xhung/ Mật khẩu: 123
+ 
+  Phía quản trị viên:
+   - 
+  Phía người dùng:
+   - 
  
