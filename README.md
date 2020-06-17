@@ -40,10 +40,12 @@
  ### Cài đặt:
   - 
   - 
- ### Phía quản trị viên: Tài khoản quản trị viên (tài khoản gốc của website): Tên đăng nhập: admin / Mật khẩu: admin
+ ### Sử dụng phía quản trị viên: 
+ Tài khoản quản trị viên (tài khoản gốc của website): Tên đăng nhập: admin / Mật khẩu: admin
   -
   -
- ### Phía người dùng: Tài khoản người dùng: Tên đăng nhập: xhung/ Mật khẩu: 123
+ ### Phía người dùng: 
+ Tài khoản người dùng: Tên đăng nhập: xhung/ Mật khẩu: 123
   -
   - 
  
