@@ -3,7 +3,7 @@
 ## Mô tả project: 
   - Xây dựng cở sở dữ liệu và website phục vụ cho việc học tiếng anh gồm kỹ năng nghe và đọc. Người dùng có thể vào web tạo tài khoản để làm bài tập và theo dõi bảng điểm cá nhân của mình. Quản trị viên có thể vào web để thêm các cấp bậc, danh mục, bài tập, câu hỏi cho website của mình.
   - Back-end: SQL Server Database, ADO.NET
-  - Front-end: Angular framework
+  - Front-end: Angular framework, Bootstrap
 
 ## Danh sách thành viên:
 + 1751010022 - Nguyễn Bá Đạt
@@ -15,28 +15,28 @@
 ## Phân công công việc:
 ### Back-end: 
  - Phân tích thiết kế cơ sở dữ liệu: Bá Đạt, Quí Đông, Nhật Minh, Xuân Hưng, Quang Minh
- - Tạo lược đồ cơ sở dữ liệu: Bá Đạt
- - Thêm dữ liệu cơ sở dữ liệu: Xuân Hưng, Quang Minh
- - Viết Store Produce: Quí Đông
- - Tạo project C# .NET core: Bá Đạt
- - Tạo APIController (Create, Update, Remove) cho các bảng dữ liệu: Bá Đạt
- - Tạo LinQ search cho các bảng (Có phân trang): Bá Đạt
+ - Tạo lược đồ cơ sở dữ liệu: Bá Đạt, Xuân Hưng, Quang Minh
+ - Thêm dữ liệu vào cơ sở dữ liệu: Xuân Hưng, Quang Minh
+ - Viết Store Produce: Quí Đông, Nhật Minh
+ - Tạo project C# .NET core: Bá Đạt, Quang Minh
+ - Tạo APIController (Create, Update, Remove) cho các bảng dữ liệu: Bá Đạt, Xuân Hưng
+ - Tạo LinQ search cho các bảng (Có phân trang): Bá Đạt, Quang Minh
  - Xử lý trang luyện nghe, luyện đọc (Hiện nội dung bài tập, tính và lưu điểm): Quí Đông, Bá Đạt
- - Xử lý đăng nhập, đăng kí (Có mã hóa mật khẩu): Bá Đạt
+ - Xử lý đăng nhập, đăng kí (Có mã hóa mật khẩu): Bá Đạt, Xuân Hưng
  - Xử lý chỉnh sửa thông tin, đổi mật khẩu người dùng: Bá Đạt
 ### Front-end:
  #### Người dùng: 
   - Giao diện trang chủ: Nhật Minh, Bá Đạt   
   - Giao diện trang luyện nghe, luyện đọc: Gồm 3 trang  
-    + Level (Các cấp bậc): Quí Đông  
+    + Level (Các cấp bậc): Quí Đông, Nhật Minh
     + Lesson (Các bài tập của cấp bậc đó): Quí Đông
-    + Content (Phần làm bài tập): Quí Đông, Bá Đạt 
+    + Content (Phần làm bài tập): Quí Đông, Nhật Minh
   - Giao diện đăng nhập, đăng kí: Nhật Minh, Bá Đạt
   - Giao diện chỉnh sửa thông tin, đổi mật khẩu người dùng: Bá Đạt
-  - Giao diện bảng điểm cá nhân của người dùng: Bá Đạt
-  - Giao diện frame Dịch từ (Lấy Plugin Frame Tra Từ của dict.laban.vn): Bá Đạt 
+  - Giao diện bảng điểm cá nhân của người dùng: Xuân Hưng, Quang Minh
+  - Giao diện frame Dịch từ (Lấy Plugin Frame Tra Từ của dict.laban.vn): Bá Đạt, Quí Đông
  #### Quản trị viên: 
-  - Giao diện thêm, sửa, xóa, tìm các bảng(CapBac, DanhMuc, BaiTap, CauHoi): Bá Đạt
+  - Giao diện thêm, sửa, xóa, tìm các bảng(CapBac, DanhMuc, BaiTap, CauHoi): Bá Đạt, Nhật Minh
 ## Hướng dẫn sử dụng:
  ### Cài đặt:
   - Cài SQL Server 2019 và chạy file script LEnglishDB.sql trong đường dẫn LEnglish\assets\Database
@@ -52,7 +52,8 @@
  ### Phía người dùng: 
  #### Tài khoản mẫu người dùng: Tên đăng nhập: xhung/ Mật khẩu: 123
   - Người dùng có thể tra cứu từ frame dịch tại trang chủ hoặc bấm nút dịch góc phải dưới
-  - Vào các mục luyện nghe luyện đọc chọn bài tập và làm bài
-  - Chỉnh sửa thông tin và đổi mật khẩu bằng nút tùy chỉnh
-  - Xem thông tin bảng điểm các bài tập đã làm và chưa làm xong
+  - Vào các mục luyện nghe luyện đọc chọn bài tập và làm bài (Có thể làm bài mà không cần đăng nhập, còn nếu đăng nhập vào sẽ được lưu lại kết quả sau khi làm bài)
+  - Người dùng đăng nhập bằng nút đăng nhập góc phải trên, nếu chưa có tài khoản có thể đăng kí from đăng nhập vừa nhấp vô
+  - Chỉnh sửa thông tin và đổi mật khẩu bằng nút tùy chỉnh (Nút tùy chỉnh ở phần dropdown tên đăng nhập góc phải trên)
+  - Xem thông tin bảng điểm các bài tập đã làm và chưa làm xong (Nút bảng điểm ở phần dropdown tên đăng nhập góc phải trên)
  
