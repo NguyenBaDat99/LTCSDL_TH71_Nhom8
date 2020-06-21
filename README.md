@@ -39,7 +39,7 @@
   - Giao diện thêm, sửa, xóa, tìm các bảng(CapBac, DanhMuc, BaiTap, CauHoi): Bá Đạt, Nhật Minh
 ## Hướng dẫn sử dụng:
  ### Cài đặt:
-  - Cài SQL Server 2019 và chạy file script LEnglishDB.sql trong đường dẫn LEnglish\assets\Database
+  - Cài SQL Server 2019 và chạy file script LEnglishDB.sql hoặc file backup trong đường dẫn LEnglish\assets\Database
   - Cài Visual Studio 2019, hiệu chỉnh đường dẫn trong file LEnglishDBContext.cs và chạy project (Xem các API từ https://localhost:44318/swagger)
   - Cài Visual Studio Code (Hoặc editor khác), bật terminal chạy lần lượt các lệnh: npm install, ng build, ng s. Truy cập đường dẫn      http://localhost:4200 để vào web
   - Tạo tài khoản bằng cách click vào nút đăng nhập góc phải trên, click nút đăng kí và điền các thông tin cần thiết để tạo tài khoản
